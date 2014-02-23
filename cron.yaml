@@ -1,0 +1,5 @@
+cron:
+- description: get readings for day
+  url: /tasks/updateprayers
+  schedule: every 6 hours from 00:01 to 18:01
+  timezone: US/Central
