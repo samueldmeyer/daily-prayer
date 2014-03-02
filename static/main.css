@@ -1,48 +1,55 @@
+body {
+    margin-left: 20%;
+    margin-right: 35%;
+    padding: 1%;
+}
+
 p {
     font-family: "Goudy Old Style";
 }
 
 .old_style {
     font-family: "Goudy Old Style";
+    font-size: 1.2em;
 }
 
 .old_style2 {
     font-family: "Goudy Old Style";
     /*font-size: 2px;*/
-    font-size: .8em;
+    font-size: 1em;
 }
 
 .old_style3 {
     font-family: "Goudy Old Style";
     /*font-size: 3px;*/
-    font-size: 1.2em;
+    font-size: 1.4em;
 }
 
 .old_style5 {
     font-family: "Goudy Old Style";
     /*font-size: 5px;*/
-    font-size: 2em;
+    font-size: 2.2em;
 }
 
 .old_style4 {
     font-family: "Goudy Old Style";
     /*font-size: 4px;*/
-    font-size: 1.6em;
+    font-size: 1.8em;
 }
 
 .copyright {
     font-family: "Goudy Old Style";
-    font-size: .7em;
+    font-size: .9em;
 }
 /*styles from Bible.org*/
 .s1 {
     font-family: "Goudy Old Style";
-    font-size: 1.1em;
+    font-size: 1.3em;
 }
 
 .d {
     font-family: "Goudy Old Style" ;
-    font-size: .9em;
+    font-size: 1.1em;
 }
 
 .q1 {
@@ -78,6 +85,6 @@ p {
 }
 
 .v {
-    font-size: .3em;
-    margin-left: .3em;
+    font-size: .4em;
+    margin-left: .4em;
 }

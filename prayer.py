@@ -8,6 +8,7 @@ import urllib2
 import datetime
 import xml.etree.ElementTree as ET
 import re
+import random
 
 import webapp2
 import jinja2
@@ -39,6 +40,10 @@ opener = urllib2.build_opener(handler)
 # Install the opener.
 # Now all calls to urllib2.urlopen use our opener.
 urllib2.install_opener(opener)
+
+
+opening_sentences_json_data = open('data/opening_sentences.json')
+opening_sentences = json.load(opening_sentences_json_data)
 
 def render_str(template, **params):
     t = jinja_env.get_template(template)
@@ -72,30 +77,6 @@ class BaseHandler(webapp2.RequestHandler):
         return cookie_val and check_secure_val(cookie_val)
 
 
-# Daily readings in epiphany- work in progress
-epiphany = [
-    0, 1, 2, 3, 4,
-    [
-        0,1,2,3,4,
-        {
-            "morn_psalm": [88], "even_psalm": [91,92], "readings": ["Gen. 27:46-28:4,10-22", "Rom. 13:1-14", "John 8:33-47"]
-                }, {
-            "morn_psalm": [87, 90], "even_psalm": [136], "readings": ["Gen. 29:1-20", "Rom. 14:1-23", "John 8:47-59"]
-        }
-    ],
-    [
-        {
-            "morn_psalm": [66, 67], "even_psalm": [19, 46], "readings": ["Gen. 29:20-35", "1 Tim. 3:14-4:10", "Mark 10:23-31"]
-        }, {
-            "morn_psalm": ["89:1-18"], "even_psalm": ["89:19-52"], "readings": ["Gen. 30:1-24", "1 John 1:1-10", "John 9:1-17"]
-        }, {
-            "morn_psalm": [97, 99], "even_psalm": [94], "readings": ["Gen. 31:1-24", "1 John 2:1-11", "John 9:18-41"]
-        }, {
-            "morn_psalm": ["101", "101:1-30"], "even_psalm": ["119:121-144"], "readings": ["Gen. 31:25-50", "1 John 2:12-17", "John 10:1-18"]
-        }
-    ]
-]
-
 def get_todays_readings(update = False):
     """Get's today's readings- a dictionary of lists of Bible references
     update will refresh the cache"""
@@ -119,9 +100,12 @@ def get_todays_readings(update = False):
             nt_reading = root.findall("./info/nt")[0].text
             gospel_reading = root.findall(".info/gospel")[0].text
             
+            season = root.findall(".info/liturgical/season")[0].text
+            
             readings = {"morn_psalm" : morning_psalms,
                         "even_psalm" : evening_psalms,
-                        "readings" : [ot_reading, nt_reading, gospel_reading]}
+                        "readings" : [ot_reading, nt_reading, gospel_reading],
+                        "season" : season}
             
             memcache.set("readings", readings)
         except:
@@ -129,7 +113,7 @@ def get_todays_readings(update = False):
             
             memcache.delete("readings")
             
-            readings = {"morn_psalm": [1], "even_psalm": [1], "readings": ["Gen. 1:1", "Gen. 1:1", "Gen. 1:1"]}
+            readings = {"morn_psalm": [1], "even_psalm": [1], "readings": ["Gen. 1:1", "Gen. 1:1", "Gen. 1:1"], "season": "At any Time"}
     return readings
   
 def split_psalm(reference):
@@ -144,13 +128,18 @@ def split_psalm(reference):
         psalms = reference.split(',')
     return psalms
     
-def get_bible_passage(reference):
+def get_bible_passage(reference, translation='eng-ESV'):
     """gets the text of a Bible passage from Bibles.org"""
     
     display = memcache.get(reference)
     if display is None:
-        logging.debug("https://bibles.org/v2/passages.js?version=eng-ESV&q[]=%s" % urllib2.quote(reference))
-        url = urllib2.urlopen("https://bibles.org/v2/passages.js?version=eng-ESV&q[]=%s" % urllib2.quote(reference))
+        if re.search(r'Philemon', reference):
+            reference = re.sub('Philemon', 'Philemon 1:', reference)
+        # See http://www.esvapi.org/v2/rest/readingPlanInfo?key=IP&reading-plan=bcp&date=2014-03-02 for apocrypha
+        if re.search(r'Ecclus\.', reference):
+            translation='eng-NABRE'
+        logging.debug("https://bibles.org/v2/passages.js?version=%s&q[]=%s" % (translation, urllib2.quote(reference)))
+        url = urllib2.urlopen("https://bibles.org/v2/passages.js?version=%s&q[]=%s" % (translation, urllib2.quote(reference)))
         
         json_text = url.read()
         try:
@@ -175,16 +164,33 @@ def get_psalms(references):
     passages = [get_bible_passage("Psalm " + str(x)) for x in references]
     return " ".join(passages)
 
+def get_opening_sentences(season):
+    """given a season (text), returns a dictionary with 'text' and 'verse"""
+    #TODO: special case for Easter: add 'Alleluia! Christ is risen.<br><i>The Lord is risen indeed. Alleluia!</i>' to each
+    if season in opening_sentences:  
+        season_list = opening_sentences[season]
+    else:
+        season_list = opening_sentences.get('At any Time', ['Praise the Lord!'])
+    return random.choice(season_list)
+
+
 class MorningPrayer(BaseHandler):
     def get(self):
         todays_readings = get_todays_readings()
         readings_reference = todays_readings['readings']
         psalm_reference = todays_readings['morn_psalm']
+        opening = get_opening_sentences(todays_readings['season'])
+        opening_sentences = opening['text']
+        logging.error(opening_sentences)
+        logging.debug(opening_sentences)
+        opening_verse = opening['verse']
         logging.error(psalm_reference)
         self.render('morning-prayer.html', reading1 = get_bible_passage(readings_reference[0]),
                     reading2 = get_bible_passage(readings_reference[1]),
                     reading3 = get_bible_passage(readings_reference[2]),
-                    psalms = get_psalms(psalm_reference))
+                    psalms = get_psalms(psalm_reference),
+                    opening_sentences = opening['text'],
+                    opening_verse = opening['verse'])
 
 class UpdatePrayer(BaseHandler):
     def get(self):
