@@ -42,8 +42,12 @@ opener = urllib2.build_opener(handler)
 urllib2.install_opener(opener)
 
 
+# Load data
 opening_sentences_json_data = open('data/opening_sentences.json')
 opening_sentences = json.load(opening_sentences_json_data)
+
+antiphons_json_data = open('data/antiphons.json')
+antiphons = json.load(antiphons_json_data)
 
 def render_str(template, **params):
     t = jinja_env.get_template(template)
@@ -119,13 +123,18 @@ def get_todays_readings(update = False):
 def split_psalm(reference):
     """splits pslams when multiple are included together"""
     # Example input: 'Ps. 33,108:1-6,7-13'
-    reference = re.sub(r'Ps\. ', '', reference)
-    if re.search(r',\d+,\d+:', reference):
-        psalms = reference.split(',', 2)
-    elif re.search(r'^[^,]*\d+,\d+:', reference):
-        psalms = reference.split(',', 1)
+    # Example input: 'Ps. 63:1-8,9-11,Ps. 98'
+    if len(re.findall(r'Ps\.', reference)) > 1:
+        psalms = reference.split(',Ps. ')
+        psalms[0] = re.sub(r'Ps\. ', '', psalms[0])
     else:
-        psalms = reference.split(',')
+        reference = re.sub(r'Ps\. ', '', reference)
+        if re.search(r',\d+,\d+:', reference):
+            psalms = reference.split(',', 2)
+        elif re.search(r'^[^,]*\d+,\d+:', reference):
+            psalms = reference.split(',', 1)
+        else:
+            psalms = reference.split(',')
     return psalms
     
 def get_bible_passage(reference, translation='eng-ESV'):
@@ -170,9 +179,17 @@ def get_opening_sentences(season):
     if season in opening_sentences:  
         season_list = opening_sentences[season]
     else:
+        # Error handling: use 'At any Time' sentences if other is not available, or just use 'Praise the Lord!' if that fails
         season_list = opening_sentences.get('At any Time', ['Praise the Lord!'])
     return random.choice(season_list)
 
+def get_antiphon(season, day = None):
+    """given a season (and in the future a day), returns a string of the antiphon"""
+    if season in antiphons:
+        season_list = antiphons[season]
+    else:
+        season_list = antiphons.get('Other', ['Let us adore him.'])
+    return random.choice(season_list)
 
 class MorningPrayer(BaseHandler):
     def get(self):
@@ -181,16 +198,14 @@ class MorningPrayer(BaseHandler):
         psalm_reference = todays_readings['morn_psalm']
         opening = get_opening_sentences(todays_readings['season'])
         opening_sentences = opening['text']
-        logging.error(opening_sentences)
-        logging.debug(opening_sentences)
         opening_verse = opening['verse']
-        logging.error(psalm_reference)
         self.render('morning-prayer.html', reading1 = get_bible_passage(readings_reference[0]),
                     reading2 = get_bible_passage(readings_reference[1]),
                     reading3 = get_bible_passage(readings_reference[2]),
                     psalms = get_psalms(psalm_reference),
                     opening_sentences = opening['text'],
-                    opening_verse = opening['verse'])
+                    opening_verse = opening['verse'],
+                    antiphon = get_antiphon(todays_readings['season']))
 
 class UpdatePrayer(BaseHandler):
     def get(self):

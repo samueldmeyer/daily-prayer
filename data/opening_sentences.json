@@ -1,4 +1,28 @@
 {
+    "Advent": [
+        {
+            "text": "Watch , for you know not when the master of the house will come, in the evening, or at midnight, or at cockcrow, or in the morning; lest he come suddenly and find you asleep.",
+            "verse": "Mark 13:35, 36"
+        },
+        {
+            "text": "In the wilderness prepare the way of the Lord, make straight in the desert a highway for our God.",
+            "verse": "Isaiah 40:3"
+        },
+        {
+            "text": "The glory of the Lord shall be revealed, and all flesh shall see it together.",
+            "verse": "Isaiah 40:5"
+        }  
+    ],
+    "Christmas": [
+        {
+            "text": "Behold, I bring you good news of a great joy, which will come to all the people; for unto you is born this day in the city of David, a Savior, who is Christ the Lord.",
+            "verse": "Luke 2:10, 11"
+        },
+        {
+            "text": "Behold, the dwelling of God is with mankind. He will dwell with them, and they shall be his people, and God himself will be with them, and be their God.",
+            "verse": "Revelation 21:3"
+        }
+    ],
     "Epiphany": [
         {
             "text": "Nations shall come to your light, and kings to the brightness of your rising.",
