@@ -81,17 +81,22 @@ class BaseHandler(webapp2.RequestHandler):
         return cookie_val and check_secure_val(cookie_val)
 
 
-def get_todays_readings(update = False):
+def get_todays_readings(date, update = False):
     """Get's today's readings- a dictionary of lists of Bible references
     update will refresh the cache"""
     
-    # ESV runs in US/Central time, but can return dates if requested
-    url = urllib2.urlopen("http://www.esvapi.org/v2/rest/readingPlanInfo?key=IP&reading-plan=bcp")
-    xml_text = url.read()
+    if date is None:
+        # Offset for PST
+        date = time.strftime("%Y-%m-%d", time.gmtime(time.time()- time.timezone))
     
-    readings = memcache.get("readings")
+    readings_date = "readings_" + date
+    readings = memcache.get(readings_date)
+    logging.error(readings_date)
     if readings is None or update:
         try:
+            # ESV runs in US/Central time, but can return dates if requested
+            url = urllib2.urlopen("http://www.esvapi.org/v2/rest/readingPlanInfo?key=IP&reading-plan=bcp&date=%s" % (date))
+            xml_text = url.read()
             root = ET.fromstring(xml_text)
             morning_psalm = root.findall("./info/psalm-1")[0].text
             logging.error(morning_psalm)
@@ -111,11 +116,11 @@ def get_todays_readings(update = False):
                         "readings" : [ot_reading, nt_reading, gospel_reading],
                         "season" : season}
             
-            memcache.set("readings", readings)
+            memcache.set(readings_date, readings)
         except:
             logging.error("Unable to get readings from esvapi.org")
             
-            memcache.delete("readings")
+            memcache.delete(readings_date)
             
             readings = {"morn_psalm": [1], "even_psalm": [1], "readings": ["Gen. 1:1", "Gen. 1:1", "Gen. 1:1"], "season": "At any Time"}
     return readings
@@ -193,7 +198,7 @@ def get_antiphon(season, day = None):
 
 class MorningPrayer(BaseHandler):
     def get(self):
-        todays_readings = get_todays_readings()
+        todays_readings = get_todays_readings(self.request.get('date'))
         readings_reference = todays_readings['readings']
         psalm_reference = todays_readings['morn_psalm']
         opening = get_opening_sentences(todays_readings['season'])
@@ -209,7 +214,7 @@ class MorningPrayer(BaseHandler):
 
 class UpdatePrayer(BaseHandler):
     def get(self):
-        todays_readings = get_todays_readings(True)
+        todays_readings = get_todays_readings(None, True)
         readings_reference = todays_readings['readings']
         psalm_reference = todays_readings['morn_psalm']
         get_bible_passage(readings_reference[0])
