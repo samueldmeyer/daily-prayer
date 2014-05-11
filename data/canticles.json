@@ -1,0 +1,100 @@
+{
+  "8": {
+    "number": 8,
+    "title": "The Song of Moses",
+    "latin_title": "Cantemus Domino",
+    "verse": "Exodus 15:1-6, 11-13, 17-18",
+    "instruction": "Especially suitable for use in Easter Season",
+    "file": "templates/canticles/08-The_Song_Of_Moses.html"
+  },
+  "9": {
+    "number": 9,
+    "title": "The First Song of Isaiah",
+    "latin_title": "Ecce, Deus",
+    "verse": "Isaiah 12:2-6",
+    "file": "templates/canticles/09-First_Song_Isaiah.html"
+  },
+  "10": {
+    "number": 10,
+    "title": "The Second Song of Isaiah",
+    "latin_title": "Quaerite Dominum",
+    "verse": "Isaiah 55:6-11",
+    "file": "templates/canticles/10-Second_Song_Isaiah.html"
+  },
+  "11": {
+    "number": 11,
+    "title": "The Third Song of Isaiah",
+    "latin_title": "Surge, illuminare",
+    "verse": "Isaiah 60:1-3, 11a, 14c, 18-19",
+    "file": "templates/canticles/11-Third_Song_Isaiah.html"
+  },
+  "12": {
+    "number": 12,
+    "title": "A Song of Creation",
+    "latin_title": "Benedicite, omnia opera Domini",
+    "verse": "Song of the Three Young Men, 35-65",
+    "file": "templates/canticles/12-Song_Of_Creation.html"
+  },
+  "13": {
+    "number": 13,
+    "title": "A Song of Praise",
+    "latin_title": "Benedictus es, Domine",
+    "verse": "Song of the Three Young Men, 29-34",
+    "file": "templates/canticles/13-Song_Of_Praise.html"
+  },
+  "14": {
+    "number": 14,
+    "title": "A Song of Penitence",
+    "latin_title": "Kyrie Pantokrator",
+    "verse": "Prayer of Manasseh 1-2, 4, 6-7, 11-15",
+    "instructions": "Especially suitable in Lent, and on other penitential occasions",
+    "file": "templates/canticles/14-Song_Of_Penitence.html"
+  },
+  "15": {
+    "number": 15,
+    "title": "The Song of Mary",
+    "latin_title": "Magnificat",
+    "verse": "Luke 1:46-55",
+    "file": "templates/canticles/15-Song_Of_Mary.html"
+  },
+  "16": {
+    "number": 16,
+    "title": "The Song of Zechariah",
+    "latin_title": "Benedictus Dominus Deus",
+    "verse": "Luke 1: 68-79",
+    "file": "templates/canticles/16-Song_Of_Zechariah.html"
+  },
+  "17": {
+    "number": 17,
+    "title": "The Song of Simeon",
+    "latin_title": "Nunc Dimittis",
+    "verse": "Luke 2:29-32",
+    "file": "templates/canticles/17-Song_Of_Simeon.html"
+  },
+  "18": {
+    "number": 18,
+    "title": "A Song to the Lamb",
+    "latin_title": "Dignus es",
+    "verse": "Revelation 4:11, 5:9-10, 13",
+    "file": "templates/canticles/18-Song_To_The_Lamb.html"
+  },
+  "19": {
+    "number": 19,
+    "title": "The Song of the Redeemed",
+    "latin_title": "Magna et mirabilia",
+    "verse": "Revelation 15:3-4",
+    "file": "templates/canticles/19-Song_Of_The_Redeemed.html"
+  },
+  "20": {
+    "number": 20,
+    "title": "Glory to God",
+    "latin_title": "Gloria in excelsis",
+    "file": "templates/canticles/20-Glory_To_God.html"
+  },
+  "21": {
+    "number": 21,
+    "title": "You are God",
+    "latin_title": "Te Deum laudamus",
+    "file": "templates/canticles/21-You_Are_God.html"
+  }
+}
