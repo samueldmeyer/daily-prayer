@@ -200,7 +200,6 @@ def get_psalms(references):
 
 def get_opening_sentences(season, day = None):
     """given a season (text), returns a dictionary with 'text' and 'verse"""
-    #TODO: special case for Easter: add 'Alleluia! Christ is risen.<br><i>The Lord is risen indeed. Alleluia!</i>' to each
     #TODO: special case for Ascension day: it should be using Easter opening sentences
     if season in opening_sentences:
         season_list = opening_sentences[season]
@@ -246,6 +245,7 @@ class MorningPrayer(BaseHandler):
                     psalms = get_psalms(psalm_reference),
                     opening_sentences = opening['text'],
                     opening_verse = opening['verse'],
+                    season = todays_readings['season'],
                     antiphon = get_antiphon(todays_readings['season']),
                     canticle1 = canticle1, canticle2 = canticle2)
 

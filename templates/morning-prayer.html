@@ -10,64 +10,75 @@
 
 <body>
 
-<p class = "old_style"><b><i>Concerning the Service</i></b>
+<span class = directions>
+<p class = "normal"><b><i>Concerning the Service</i></b>
 </p>
 
-<p class = "old_style2">In the Daily Office, the
+<p class = "normal2">In the Daily Office, the
 term &quot;Officiant&quot; is used to denote the person,<br>
 clerical or lay, who leads the Office. </p>
 
-<p class = "old_style2">It is appropriate that
+<p class = "normal2">It is appropriate that
 other persons be assigned to read the Lessons, and <br>
 to lead other parts of the service not assigned to the officiant.
 The bishop, <br>
 when present, apporpriately concludes the Office with a blessing.
 </p>
 
-<p class = "old_style2">At celebrations of the
+<p class = "normal2">At celebrations of the
 Holy Eucharist, the Order for Morning or Evening <br>
 Prayer may be used in place of all that precedes the Offertory. </p>
 
-<p class = "old_style2">Additional Directions
+<p class = "normal2">Additional Directions
 are on page 141. </p>
 
-
-
-
-
-<p class = "old_style"><br>
+<p class = "normal"><br>
 </p>
 
-<p class = "old_style5"><b>Daily Morning Prayer: Rite Two </b></p>
+</span>
 
-<p class = "old_style2"><a name=sentences><i>The
+<p class = "normal5"><b>Daily Morning Prayer: Rite Two </b></p>
+
+<p class = "normal2 directions"><a name=sentences><i>The
 Officiant begins the service with one or more of these sentences
 of
 Scripture, or with the versicle &quot;Lord, open our lips&quot;
 on page 80.</i></a></p>
 
 <a name="Sentences"></a>
+{% if season == "Easter" %}
+<p class = "normal">
+    Alleluia! Christ is risen.<br>
+    <i>The Lord is risen indeed. Alleluia!</i>
+</p>
+{% endif %}
 
-<p class = "old_style">{{opening_sentences | safe}}&nbsp;&nbsp;&nbsp;<span class = "old_style2"><i>{{opening_verse}}</i></p>
+<p class = "normal">{{opening_sentences | safe}}&nbsp;&nbsp;&nbsp;
+    <span class = "normal2"><i>{{opening_verse}}</i></p>
 <p>&nbsp;</p>
 
 
 
 
 
-<p>&nbsp;</p>
+<p class="directions">&nbsp;</p>
 
-<p class = "old_style2"><em>The following
+<p class = "normal2 directions"><em>The following
 Confession of Sin may then be said; or the Office may
 continue at once with &quot;Lord, open our lips.&quot;</em> </p>
 
-<p><a name=confession><strong><a name="Confession"></a>Confession
-of Sin</strong></a></p>
+<p>
+    <a name=confession>
+        <strong>
+            <a name="Confession"></a>Confession of Sin
+        </strong>
+    </a>
+</p>
 
-<p class = "old_style2"><em>The Officiant says
+<p class = "normal2 directions"><em>The Officiant says
 to the people</em></p>
 
-<p class = "old_style">Dearly beloved, we have come
+<p class = "normal">Dearly beloved, we have come
 together in the presence of
 Almighty God our heavenly Father, to set forth his praise, to
 hear his holy Word, and to ask, for ourselves and on behalf
@@ -77,18 +88,18 @@ mind to worship him, let us kneel in silence, and with
 penitent and obedient hearts confess our sins, that we may
 obtain forgiveness by his infinite goodness and mercy. </p>
 
-<p class = "old_style2"><em>or this</em></p>
+<p class = "normal2"><em>or this</em></p>
 
-<p class = "old_style">Let us confess our sins against
+<p class = "normal">Let us confess our sins against
 God and our neighbor. <br>
 </p>
 
-<p class = "old_style2"><em>Silence may be kept.</em> </p>
+<p class = "normal2 directions"><em>Silence may be kept.</em> </p>
 
-<p class = "old_style2"><em>Officiant and People
+<p class = "normal2 directions"><em>Officiant and People
 together, all kneeling</em></p>
 
-<p class = "old_style">Most merciful God, <br>
+<p class = "normal">Most merciful God, <br>
 we confess that we have sinned against you <br>
 in thought, word, and deed, <br>
 by what we have done, <br>
@@ -110,71 +121,86 @@ to the glory of your Name. Amen. </p>
 
 <p align="right">&nbsp;</p>
 
-<p class = "old_style2"><em>The Priest alone
+<p class = "normal2 directions"><em>The Priest alone
 stands and says</em></p>
 
-<p class = "old_style">Almighty God have mercy on you,
-forgive you all your sins
-through our Lord Jesus Christ, strengthen you in all
-goodness, and by the power of the Holy Spirit keep you in
+<p class = "normal">Almighty God have mercy on us,
+forgive us all your sins
+through our Lord Jesus Christ, strengthen us in all
+goodness, and by the power of the Holy Spirit keep us in
 eternal life. <em>Amen.</em> </p>
 
-<p class = "old_style2"><em>A deacon or lay
+<p class = "normal2 directions"><em>A deacon or lay
 person using the preceding form remains kneeling, and
 substitutes &quot;us&quot; for &quot;you&quot; and
 &quot;our&quot; for &quot;your.&quot;</em> </p>
 
 <p>&nbsp;</p>
 
-<p class = "old_style4"><a name=invpsal><strong>The
+<p class = "normal4"><a name=invpsal><strong>The
 Invitatory and Psalter</strong></a></p>
 
-<p class = "old_style2"><em>All stand </em></p>
+<p class = "normal2 directions"><em>All stand </em></p>
 
-<p class = "old_style2"><em>Officiant</em> &nbsp;&nbsp;&nbsp;Lord, open our lips. <br>
-<em>People</em> &nbsp;&nbsp;&nbsp; &nbsp; And our mouth
-shall proclaim your praise. <br>
+<p class = "normal2">
+    <span class = "directions">
+        <em>Officiant</em>&nbsp;&nbsp;&nbsp;
+    </span>
+    Lord, open our lips. <br>
+    <span class = "directions">
+        <em>People</em> &nbsp;&nbsp;&nbsp; &nbsp;
+    </span>
+    And our mouth shall proclaim your praise. <br>
 </p>
 
-<p class = "old_style2"><em>Officiant and People
+<p class = "normal2 directions"><em>Officiant and People
 </em></p>
 
-<p class = "old_style">Glory to the Father, and to the
-Son, and to the Holy Spirit: as
-it was in the beginning, is now, and will be for ever. Amen. </p>
+<p class = "normal">
+    Glory to the Father, and to the Son, and to the Holy Spirit: as
+    it was in the beginning, is now, and will be for ever. Amen.
+    {% if season != "Lent" %}
+        Alleluia.
+    {% endif %}
+</p>
 
-<p class = "old_style2"><em>Except in Lent, add</em> &nbsp;&nbsp;&nbsp;Alleluia. </p>
+<p class = "normal2">
+    <span class="directions">
+        <em>Except in Lent, add </em>&nbsp;&nbsp;&nbsp;Alleluia
+    </span>
 
-<p class = "old_style2"><em>Then follows one of
+ </p>
+
+<p class = "normal2 directions"><em>Then follows one of
 the Invitatory Psalms, Venite or Jubilate. </em></p>
 
-<p class = "old_style2"><em>One of the following
+<p class = "normal2 directions"><em>One of the following
 Antiphons may be sung or said with the Invitatory <br>
 Psalm </em></p>
 
 
-<p class = "old_style">{{antiphon}}</p>
+<p class = "normal">{{antiphon}}</p>
 
 <p>&nbsp;</p>
 
-<p class = "old_style"><strong>Venite</strong>
-&nbsp;&nbsp;<span class = "old_style2"><em>&nbsp;Psalm
+<p class = "normal"><strong>Venite</strong>
+&nbsp;&nbsp;<span class = "normal2"><em>&nbsp;Psalm
 95:1-7</em> </p>
 
-<p class = "old_style">Come, let us sing to the Lord; * <br>
+<p class = "normal">Come, let us sing to the Lord; * <br>
 &nbsp;&nbsp;&nbsp;let us shout for joy to the Rock of our
 salvation. <br>
 Let us come before his presence with thanksgiving * <br>
 &nbsp;&nbsp;&nbsp;and raise a loud shout to him with psalms. </p>
 
-<p class = "old_style">For the Lord is a great God, * <br>
+<p class = "normal">For the Lord is a great God, * <br>
 &nbsp;&nbsp;&nbsp;and a great King above all gods. <br>
 In his hand are the caverns of the earth, * <br>
 &nbsp;&nbsp;&nbsp;and the heights of the hills are his also. <br>
 The sea is his, for he made it, * <br>
 &nbsp;&nbsp;&nbsp;and his hands have molded the dry land.</p>
 
-<p class = "old_style">Come, let us bow down, and bend
+<p class = "normal">Come, let us bow down, and bend
 the knee, * <br>
 &nbsp;&nbsp;&nbsp;and kneel before the Lord our Maker. <br>
 For he is our God, <br>
@@ -182,14 +208,14 @@ and we are the people of his pasture and the sheep of his hand. *
 <br>
 &nbsp;&nbsp;&nbsp;Oh, that today you would hearken to his voice!</p>
 
-<p class = "old_style2"><em>or Psalm 95, page
+<p class = "normal2 directions"><em>or Psalm 95, page
 724 </em></p>
 
-<p class = "old_style"><strong>Jubilate</strong>
-&nbsp;&nbsp;<span class = "old_style2"><em>&nbsp;Psalm
+<p class = "normal"><strong>Jubilate</strong>
+&nbsp;&nbsp;<span class = "normal2"><em>&nbsp;Psalm
 100</em> </p>
 
-<p class = "old_style">Be joyful in the Lord, all you
+<p class = "normal">Be joyful in the Lord, all you
 lands; * <br>
 &nbsp;&nbsp; &nbsp;serve the Lord with gladness <br>
 &nbsp; &nbsp;&nbsp;and come before his presence with a song. </p>
@@ -202,38 +228,38 @@ lands; * <br>
 
 <p>&nbsp;</p>
 
-<p class = "old_style">Know this: The Lord himself is
+<p class = "normal">Know this: The Lord himself is
 God; * <br>
 &nbsp;&nbsp;&nbsp; he himself has made us, and we are his; <br>
 &nbsp;&nbsp;&nbsp; we are his people and the sheep of his
 pasture.</p>
 
-<p class = "old_style">Enter his gates with
+<p class = "normal">Enter his gates with
 thanksgiving; <br>
 go into his courts with praise; * <br>
 &nbsp;&nbsp;&nbsp; give thanks to him and call upon his Name. </p>
 
-<p class = "old_style">For the Lord is good; <br>
+<p class = "normal">For the Lord is good; <br>
 his mercy is everlasting; * <br>
 &nbsp;&nbsp; &nbsp;and his faithfulness endures from age to age. </p>
 
-<p class = "old_style2"><em>In Easter Week, in
+<p class = "normal2"><em>In Easter Week, in
 place of an Invitatory Psalm, the following is sung or <br>
 said. It may also be used daily until the Day of Pentecost.</em></p>
 
-<p class = "old_style"><strong>Christ our Passover </strong>&nbsp;&nbsp;&nbsp;<em>Pascha
+<p class = "normal"><strong>Christ our Passover </strong>&nbsp;&nbsp;&nbsp;<em>Pascha
 nostrum</em> <br>
-<span class = "old_style2"><em>1 Corinthians
+<span class = "normal2"><em>1 Corinthians
 5:7-8; Romans 6:9-11; 1 Corinthians 15:20-22 </em></p>
 
-<p class = "old_style">Alleluia. <br>
+<p class = "normal">Alleluia. <br>
 Christ our Passover has been sacrificed for us; * <br>
 &nbsp;&nbsp;&nbsp; therefore let us keep the feast, <br>
 Not with old leaven, the leaven of malice and evil, * <br>
 &nbsp;&nbsp;&nbsp; but with the unleavened bread of sincerity and
 truth. Alleluia. </p>
 
-<p class = "old_style">Christ being raised from the dead
+<p class = "normal">Christ being raised from the dead
 will never die again; * <br>
 &nbsp;&nbsp;&nbsp; death no longer has dominion over him. <br>
 The death that he died, he died to sin, once for all; * <br>
@@ -242,7 +268,7 @@ So also consider yourselves dead to sin, * <br>
 &nbsp;&nbsp;&nbsp; and alive to God in Jesus Christ our Lord.
 Alleluia.</p>
 
-<p class = "old_style">Christ has been raised from the
+<p class = "normal">Christ has been raised from the
 dead, * <br>
 &nbsp;&nbsp;&nbsp; the first fruits of those who have fallen
 asleep. <br>
@@ -261,43 +287,42 @@ Alleluia.</p>
 
 <p align="left">&nbsp;</p>
 
-<p class = "old_style2"><em>Then follows </em></p>
+<p class = "normal2 directions"><em>Then follows </em></p>
 
-<p class = "old_style"><strong>The Psalm or Psalms
-Appointed</strong> </p>
+<p class = "normal"><strong>Psalms</strong> </p>
 
 {{psalms | safe}}
 
-<p class = "old_style2"><em>At the end of the
+<p class = "normal2 directions"><em>At the end of the
 Psalms is sung or said</em></p>
 
-<p class = "old_style">Glory to the Father, and to the
+<p class = "normal">Glory to the Father, and to the
 Son, and to the Holy Spirit: * <br>
 &nbsp;&nbsp;&nbsp; as it was in the beginning, is now, and will
 be for ever. Amen. </p>
 
 <p>&nbsp;</p>
 
-<p><a name=lessons><span class = "old_style4"><strong><a name="lessons"></a>The
+<p><a name=lessons><span class = "normal4"><strong><a name="lessons"></a>The
 Lessons</strong></span><strong><br>
 </strong></p>
 
-<p class = "old_style2"><em>One or two lessons,
+<p class = "normal2 directions"><em>One or two lessons,
 as appointed, are read, the Reader first saying </em></p>
 
-<p class = "old_style">A Reading (Lesson) from
+<p class = "normal directions">A Reading (Lesson) from
 _______________. </p>
 
-<p class = "old_style2"><em>A citation giving
+<p class = "normal2 directions"><em>A citation giving
 chapter and verse may be added. </em></p>
 
 
 {{reading1 | safe}}
 
-<p class = "old_style5"><strong>{{canticle1["number"]}}</strong>&nbsp;&nbsp;&nbsp;
+<p class = "normal5"><strong>{{canticle1["number"]}}</strong>&nbsp;&nbsp;&nbsp;
     <strong>{{canticle1["title"]}}</strong>&nbsp;&nbsp;&nbsp; <em>{{canticle1["latin_title"]}}</em>
     <br>
-    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <span class = "old_style2"><em>{{canticle1.get("verse")}}</em></span>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <span class = "normal2"><em>{{canticle1.get("verse")}}</em></span>
 </p>
 
 {{canticle1["text"] | safe}}
@@ -305,10 +330,10 @@ chapter and verse may be added. </em></p>
 <br>
 {{reading2 | safe}}
 
-<p class = "old_style5"><strong>{{canticle2["number"]}}</strong>&nbsp;&nbsp;&nbsp;
+<p class = "normal5"><strong>{{canticle2["number"]}}</strong>&nbsp;&nbsp;&nbsp;
     <strong>{{canticle2["title"]}}</strong>&nbsp;&nbsp;&nbsp; <em>{{canticle2["latin_title"]}}</em>
     <br>
-    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <span class = "old_style2"><em>{{canticle2.get("verse")}}</em></span>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <span class = "normal2"><em>{{canticle2.get("verse")}}</em></span>
 </p>
 
 {{canticle2["text"] | safe}}
@@ -316,86 +341,89 @@ chapter and verse may be added. </em></p>
 <br>
 {{reading3 | safe}}
 
-<p class = "old_style">After each Lesson the Reader may
+<p class = "normal directions">After each Lesson the Reader may
 say</p>
 
-<p class = "old_style">&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;The Word of the
-Lord. <br>
-<em>Answer</em>&nbsp; &nbsp;&nbsp; Thanks be to God. </p>
+<p class = "normal directions">
+    &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+    The Word of the Lord. <br>
+    <em>Answer</em>&nbsp; &nbsp;&nbsp; Thanks be to God.
+</p>
 
-<p class = "old_style2"><em>Or the Reader may
+<p class = "normal2 directions"><em>Or the Reader may
 say</em>&nbsp;&nbsp;&nbsp;
 Here ends the Lesson (Reading). </p>
 
-<p class = "old_style2"><em>Silence may be kept
-after each Reading. One of the following Canticles, <br>
-or one of those on pages 47-52 (Canticles 1-7), is sung or said
-after <br>
-each Reading. If three Lessons are used, the Lesson from the
-Gospel is <br>
-read after the second Canticle.</em></p>
+<p class = "normal2 directions"><em>Silence may be kept
+    after each Reading. One of the following Canticles, <br>
+    or one of those on pages 47-52 (Canticles 1-7), is sung or said
+    after <br>
+    each Reading. If three Lessons are used, the Lesson from the
+    Gospel is <br>
+    read after the second Canticle.</em></p>
 
-<p>&nbsp;</p>
+<p class = "normal"><br>
+    <a name=acreed><strong><a name="acreed"></a>
+        The Apostles' Creed</strong></a>
+</p>
 
-
-
-
-
-<p>&nbsp;</p>
-
-<p class = "old_style"><br>
-<!--webbot bot="HTMLMarkup" startspan --><a name=acreed><!--webbot bot="HTMLMarkup" endspan --><strong><a name="acreed"></a>The
-Apostles' Creed</strong><strong><!--webbot bot="HTMLMarkup" startspan --></a><!--webbot bot="HTMLMarkup" endspan --></strong><strong> </strong></p>
-
-<p class = "old_style2"><em>Officiant and People
+<p class = "normal2 directions"><em>Officiant and People
 together, all standing</em></p>
 
-<p class = "old_style">I believe in God, the Father
-almighty, <br>
-&nbsp;&nbsp;&nbsp; creator of heaven and earth; <br>
-I believe in Jesus Christ, his only Son, our Lord. <br>
-&nbsp;&nbsp;&nbsp; He was conceived by the power of the Holy
-Spirit <br>
-&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; and born of the Virgin
-Mary. <br>
-&nbsp;&nbsp;&nbsp; He suffered under Pontius Pilate, <br>
-&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; was crucified, died, and
-was buried. <br>
-&nbsp;&nbsp;&nbsp; He descended to the dead. <br>
-&nbsp;&nbsp;&nbsp; On the third day he rose again. <br>
-&nbsp;&nbsp;&nbsp; He ascended into heaven, <br>
-&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; and is seated at the right
-hand of the Father. <br>
-&nbsp;&nbsp;&nbsp; He will come again to judge the living and the
-dead. <br>
-I believe in the Holy Spirit, <br>
-&nbsp;&nbsp;&nbsp; the holy catholic Church, <br>
-&nbsp;&nbsp;&nbsp; the communion of saints, <br>
-&nbsp;&nbsp;&nbsp; the forgiveness of sins<br>
-&nbsp;&nbsp;&nbsp; the resurrection of the body, <br>
-&nbsp;&nbsp;&nbsp; and the life everlasting. Amen. </p>
+<p class = "normal">
+    I believe in God, the Father
+    almighty, <br>
+    &nbsp;&nbsp;&nbsp; creator of heaven and earth; <br>
+    I believe in Jesus Christ, his only Son, our Lord. <br>
+    &nbsp;&nbsp;&nbsp; He was conceived by the power of the Holy
+    Spirit <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; and born of the Virgin
+    Mary. <br>
+    &nbsp;&nbsp;&nbsp; He suffered under Pontius Pilate, <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; was crucified, died, and
+    was buried. <br>
+    &nbsp;&nbsp;&nbsp; He descended to the dead. <br>
+    &nbsp;&nbsp;&nbsp; On the third day he rose again. <br>
+    &nbsp;&nbsp;&nbsp; He ascended into heaven, <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; and is seated at the right
+    hand of the Father. <br>
+    &nbsp;&nbsp;&nbsp; He will come again to judge the living and the
+    dead. <br>
+    I believe in the Holy Spirit, <br>
+    &nbsp;&nbsp;&nbsp; the holy catholic Church, <br>
+    &nbsp;&nbsp;&nbsp; the communion of saints, <br>
+    &nbsp;&nbsp;&nbsp; the forgiveness of sins<br>
+    &nbsp;&nbsp;&nbsp; the resurrection of the body, <br>
+    &nbsp;&nbsp;&nbsp; and the life everlasting. Amen.
+</p>
 
-<p>&nbsp;</p>
+<p>
+    <a name=prayers>
+        <span class = "normal4">
+            <strong><a name="prayers"></a>The Prayers</strong>
+        </span>
+    </a>
+</p>
 
+<p class = "normal2 directions"><em><br>
+    The People stand or kneel </em>
+</p>
 
+<p class = "normal2">
+    <span class="directions">
+        <em>Officiant</em>
+    </span>
+    &nbsp;&nbsp;&nbsp; The Lord be with you. <br>
+    <span class="directions">
+        <em>People</em>
+    </span>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;And also with you. <br>
+    <span class="directions">
+        <em>Officiant</em>
+    </span>
+    &nbsp;&nbsp;&nbsp; Let us pray. </p>
 
-
-
-<p>&nbsp;</p>
-
-<p><!--webbot bot="HTMLMarkup" startspan --><a name=prayers><!--webbot bot="HTMLMarkup" endspan --><span class = "old_style4"><strong><a name="prayers"></a>The
-Prayers</strong><strong><!--webbot bot="HTMLMarkup" startspan --></a><!--webbot bot="HTMLMarkup" endspan --></strong><span class = "old_style4"><strong>
-</strong></p>
-
-<p class = "old_style2"><em><br>
-The People stand or kneel </em></p>
-
-<p class = "old_style2"><em>Officiant</em>&nbsp;&nbsp;&nbsp; The Lord be with you. <br>
-<em>People</em>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;And
-also with you. <br>
-<em>Officiant</em>&nbsp;&nbsp;&nbsp; Let us pray. </p>
-
-<p class = "old_style2"><em>Officiant and People
+<p class = "normal2 directions"><em>Officiant and People
 </em></p>
 <div align="center"><center>
 
@@ -438,29 +466,20 @@ also with you. <br>
 </table>
 </center></div>
 
-<p class = "old_style2"><em>Then follows one of
+<p class = "normal2"><em>Then follows one of
 these sets of Suffrages </em></p>
 
-<p class = "old_style">&nbsp;&nbsp;&nbsp;
+<p class = "normal">&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp; <strong>A</strong> </p>
 
-<p class = "old_style">V.&nbsp;&nbsp;&nbsp; Show us your
+<p class = "normal">V.&nbsp;&nbsp;&nbsp; Show us your
 mercy, O Lord; <br>
 R.&nbsp;&nbsp;&nbsp; And grant us your salvation. <br>
 V.&nbsp;&nbsp;&nbsp; Clothe your ministers with righteousness; <br>
 R.&nbsp;&nbsp;&nbsp; Let your people sing with joy. <br>
 V.&nbsp;&nbsp;&nbsp; Give peace, O Lord, in all the world; <br>
-R.&nbsp;&nbsp;&nbsp; For only in you can we live in safety.</p>
-
-<p>&nbsp;</p>
-
-
-
-
-
-<p align="left">&nbsp;</p>
-
-<p class = "old_style">V.&nbsp;&nbsp;&nbsp; Lord, keep
+R.&nbsp;&nbsp;&nbsp; For only in you can we live in safety. <br>
+V.&nbsp;&nbsp;&nbsp; Lord, keep
 this nation under your care; <br>
 R.&nbsp;&nbsp;&nbsp; And guide us in the way of justice and
 truth. <br>
@@ -471,10 +490,10 @@ R.&nbsp;&nbsp;&nbsp; Nor the hope of the poor be taken away. <br>
 V.&nbsp;&nbsp;&nbsp; Create in us clean hearts, O God; <br>
 R.&nbsp;&nbsp;&nbsp; And sustain us with your Holy Spirit. </p>
 
-<p class = "old_style">&nbsp;&nbsp;&nbsp;
+<p class = "normal">&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp; <strong>B </strong></p>
 
-<p class = "old_style">V.&nbsp;&nbsp;&nbsp; Save your
+<p class = "normal">V.&nbsp;&nbsp;&nbsp; Save your
 people, Lord, and bless your inheritance; <br>
 R.&nbsp;&nbsp;&nbsp; Govern them and uphold them, now and always.
 <br>
@@ -487,41 +506,33 @@ R.&nbsp;&nbsp;&nbsp; For we put our trust in you. <br>
 V.&nbsp;&nbsp;&nbsp; In you, Lord, is our hope; <br>
 R.&nbsp;&nbsp;&nbsp; And we shall never hope in vain. </p>
 
-<p class = "old_style2"><em>The Officiant then
+<p class = "normal2"><em>The Officiant then
 says one or more of the following Collects </em></p>
 
-<p class = "old_style"><em>The Collect of the Day </em></p>
+<p class = "normal"><em>The Collect of the Day </em></p>
 
-<p class = "old_style"><em><a name="Sunday"></a>A Collect for Sundays </em></p>
+<p class = "normal"><em><a name="Sunday"></a>A Collect for Sundays </em></p>
 
-<p class = "old_style">O God, you make us glad with the
+<p class = "normal">O God, you make us glad with the
 weekly remembrance of <br>
 the glorious resurrection of your Son our Lord: Give us this <br>
 day such blessing through our worship of you, that the week <br>
 to come may be spent in your favor; through Jesus Christ our <br>
 Lord. <em>Amen.</em> </p>
 
-<p>&nbsp;</p>
+<p class = "normal"><em><a name="Friday"></a>A Collect for Fridays </em></p>
 
-
-
-
-
-<p>&nbsp;</p>
-
-<p class = "old_style"><em><a name="Friday"></a>A Collect for Fridays </em></p>
-
-<p class = "old_style">Almighty God, whose most dear Son
+<p class = "normal">Almighty God, whose most dear Son
 went not up to joy but <br>
 first he suffered pain, and entered not into glory before he <br>
 was crucified: Mercifully grant that we, walking in the way <br>
 of the cross, may find it none other than the way of life and <br>
 peace; through Jesus Christ our Lord. <em>Amen.</em></p>
 
-<p class = "old_style"><em><br>
+<p class = "normal"><em><br>
 <a name="Saturday"></a>A Collect for Saturdays </em></p>
 
-<p class = "old_style">Almighty God, who after the
+<p class = "normal">Almighty God, who after the
 creation of the world rested <br>
 from all your works and sanctified a day of rest for all your <br>
 creatures: Grant that we, putting away all earthly anxieties, <br>
@@ -530,10 +541,10 @@ that our rest here upon earth may be a preparation for the <br>
 eternal rest promised to your people in heaven; through Jesus <br>
 Christ our Lord. <em>Amen.</em> </p>
 
-<p class = "old_style"><br>
+<p class = "normal"><br>
 <em>A Collect for the Renewal of Life </em></p>
 
-<p class = "old_style">O God, the King eternal, whose
+<p class = "normal">O God, the King eternal, whose
 light divides the day from the <br>
 night and turns the shadow of death into the morning: Drive <br>
 far from us all wrong desires, incline our hearts to keep your <br>
@@ -542,10 +553,10 @@ done your will with cheerfulness while it was day, we may, <br>
 when night comes, rejoice to give you thanks; through Jesus <br>
 Christ our Lord. <em>Amen.</em> </p>
 
-<p class = "old_style"><br>
+<p class = "normal"><br>
 <em>A Collect for Peace </em></p>
 
-<p class = "old_style">O God, the author of peace and
+<p class = "normal">O God, the author of peace and
 lover of concord, to know <br>
 you is eternal life and to serve you is perfect freedom: Defend <br>
 us, your humble servants, in all assaults of our enemies; that <br>
@@ -561,19 +572,19 @@ any adversaries; through the might of Jesus Christ our Lord. <br>
 
 <p align="left">&nbsp;</p>
 
-<p class = "old_style"><em>A Collect for Grace </em></p>
+<p class = "normal"><em>A Collect for Grace </em></p>
 
-<p class = "old_style">Lord God, almighty and
+<p class = "normal">Lord God, almighty and
 everlasting Father, you have <br>
 brought us in safety to this new day: Preserve us with your <br>
 mighty power, that we may not fall into sin, nor be overcome <br>
 by adversity; and in all we do, direct us to the fulfilling of <br>
 your purpose; through Jesus Christ our Lord. <em>Amen. </em></p>
 
-<p class = "old_style"><br>
+<p class = "normal"><br>
 <em>A Collect for Guidance </em></p>
 
-<p class = "old_style">Heavenly Father, in you we live
+<p class = "normal">Heavenly Father, in you we live
 and move and have our <br>
 being: We humbly pray you so to guide and govern us by <br>
 your Holy Spirit, that in all the cares and occupations of our <br>
@@ -581,13 +592,13 @@ life we may not forget you, but may remember that we are <br>
 ever walking in your sight; through Jesus Christ our Lord. <br>
 <em>Amen.</em></p>
 
-<p class = "old_style"> </p>
+<p class = "normal"> </p>
 
-<p class = "old_style2"><em>Then, unless the
+<p class = "normal2"><em>Then, unless the
 Eucharist or a form of general intercession is to follow, <br>
 one of these prayers for mission is added </em></p>
 
-<p class = "old_style"><a name="Mission"></a>Almighty and everlasting God, by
+<p class = "normal"><a name="Mission"></a>Almighty and everlasting God, by
 whose Spirit the whole <br>
 body of thy faithful people is governed and sanctified: <br>
 Receive our supplications and prayers which we offer before <br>
@@ -595,9 +606,9 @@ you for all members of your holy Church, that in their <br>
 vocation and ministry they may truly and devoutly serve you; <br>
 through our Lord and Savior Jesus Christ. <em>Amen.</em></p>
 
-<p class = "old_style2"><em>or this </em></p>
+<p class = "normal2"><em>or this </em></p>
 
-<p class = "old_style">O God, you have made of one blood
+<p class = "normal">O God, you have made of one blood
 all the peoples of the <br>
 earth, and sent your blessed Son to preach peace to those <br>
 who are far off and to those who are near: Grant that people <br>
@@ -606,17 +617,9 @@ nations into your fold; pour out your Spirit upon all flesh; <br>
 and hasten the coming of your kingdom; through Jesus <br>
 Christ our Lord. <em>Amen</em>. </p>
 
-<p class = "old_style2"><em>or the following</em> </p>
+<p class = "normal2"><em>or the following</em> </p>
 
-<p>&nbsp;</p>
-
-
-
-
-
-<p>&nbsp;</p>
-
-<p class = "old_style">Lord Jesus Christ, you stretched
+<p class = "normal">Lord Jesus Christ, you stretched
 out your arms of love on <br>
 the hard wood of the cross that everyone might come within <br>
 the reach of your saving embrace: So clothe us in your Spirit <br>
@@ -624,23 +627,23 @@ that we, reaching forth our hands in love, may bring those <br>
 who do not know you to the knowledge and love of you; for <br>
 the honor of your Name. <em>Amen.</em> </p>
 
-<p class = "old_style2"><em>Here may be sung a
+<p class = "normal2 directions"><em>Here may be sung a
 hymn or anthem.</em> </p>
 
-<p class = "old_style2"><em>Authorized
+<p class = "normal2 directions"><em>Authorized
 intercessions and thanksgivings may follow.</em> </p>
 
-<p class = "old_style">&nbsp;</p>
+<p class = "normal">&nbsp;</p>
 
-<p class = "old_style2"><em>Before the close of
+<p class = "normal2"><em>Before the close of
 the Office one or both of the following may be used</em> </p>
 
-<p class = "old_style"><em><a name="Thanksgiving"></a>The General Thanksgiving</em></p>
+<p class = "normal"><em><a name="Thanksgiving"></a>The General Thanksgiving</em></p>
 
-<p class = "old_style2"><em>Officiant and People
+<p class = "normal2"><em>Officiant and People
 </em></p>
 
-<p class = "old_style">Almighty God, Father of all
+<p class = "normal">Almighty God, Father of all
 mercies, <br>
 we your unworthy servants give you humble thanks <br>
 for all your goodness and loving-kindness <br>
@@ -660,16 +663,9 @@ through Jesus Christ our Lord, <br>
 to whom, with you and the Holy Spirit, <br>
 be honor and glory throughout all ages. Amen.</p>
 
-<p>&nbsp;</p>
+<p class = "normal"><em>A Prayer of St. Chrysostom </em></p>
 
-
-
-
-<p align="left">&nbsp;</p>
-
-<p class = "old_style"><em>A Prayer of St. Chrysostom </em></p>
-
-<p class = "old_style">Almighty God, you have given us
+<p class = "normal">Almighty God, you have given us
 grace at this time with one <br>
 accord to make our common supplication to you; and you <br>
 have promised through your well-beloved Son that when two <br>
@@ -678,37 +674,46 @@ midst of them: Fulfill now, O Lord, our desires and petitions <br>
 as may be best for us; granting us in this world knowledge of <br>
 your truth, and in the age to come life everlasting. <em>Amen.</em></p>
 
-<p class = "old_style"><em></em>&nbsp;</p>
+<p class = "normal"><em></em>&nbsp;</p>
 
-<p class = "old_style2"><em>Then may be said </em></p>
+<p class = "normal2 directions"><em>Then may be said </em></p>
 
-<p class = "old_style">Let us bless the Lord. <br>
-<em>Thanks be to God.</em> </p>
+<p class = "normal">Let us bless the Lord.
+    {% if season == "Easter" %}
+    Alleluia, alleluia.
+    {% endif %}
+    <br>
+    <em>Thanks be to God.
+    {% if season == "Easter" %}
+    Alleluia, alleluia.
+    {% endif %}
+    </em>
+</p>
 
-<p class = "old_style2"><em>From Easter Day
+<p class = "normal2 directions"><em>From Easter Day
 through the Day of Pentecost &quot;Alleluia, alleluia&quot; may <br>
 be added to the preceding versicle and response. </em></p>
 
-<p class = "old_style2"><em></em>&nbsp;</p>
+<p class = "normal2"><em></em>&nbsp;</p>
 
-<p class = "old_style2"><em>The Officiant may
+<p class = "normal2"><em>The Officiant may
 then conclude with one of the following</em></p>
 
-<p class = "old_style">The grace of our Lord Jesus
+<p class = "normal">The grace of our Lord Jesus
 Christ, and the love of God, and <br>
 the fellowship of the Holy Spirit, be with us all evermore. <br>
-<em>Amen.</em>&nbsp;&nbsp;&nbsp; <span class = "old_style2"><em>2 Corinthians 13:14 </em></p>
+<em>Amen.</em>&nbsp;&nbsp;&nbsp; <span class = "normal2"><em>2 Corinthians 13:14 </em></p>
 
-<p class = "old_style">May the God of hope fill us with
+<p class = "normal">May the God of hope fill us with
 all joy and peace in <br>
 believing through the power of the Holy Spirit. <em>Amen.</em> <br>
-<span class = "old_style2"><em>Romans 15:13 </em></p>
+<span class = "normal2"><em>Romans 15:13 </em></p>
 
-<p class = "old_style">Glory to God whose power, working
+<p class = "normal">Glory to God whose power, working
 in us, can do infinitely <br>
 more than we can ask or imagine: Glory to him from <br>
 generation to generation in the Church, and in Christ Jesus <br>
-for ever and ever. <em>Amen.</em>&nbsp;&nbsp;&nbsp; <span class = "old_style2"><em>Ephesians 3:20,21</em> </p>
+for ever and ever. <em>Amen.</em>&nbsp;&nbsp;&nbsp; <span class = "normal2"><em>Ephesians 3:20,21</em> </p>
 
 
 </body>
