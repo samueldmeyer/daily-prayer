@@ -58,9 +58,6 @@ on page 80.</i></a></p>
 <p>&nbsp;</p>
 
 
-
-
-
 <p class="directions">&nbsp;</p>
 
 <p class = "normal2 directions"><em>The following
@@ -78,21 +75,10 @@ continue at once with &quot;Lord, open our lips.&quot;</em> </p>
 <p class = "normal2 directions"><em>The Officiant says
 to the people</em></p>
 
-<p class = "normal">Dearly beloved, we have come
-together in the presence of
-Almighty God our heavenly Father, to set forth his praise, to
-hear his holy Word, and to ask, for ourselves and on behalf
-of others, those things that are necessary for our life and our
-salvation. And so that we may prepare ourselves in heart and
-mind to worship him, let us kneel in silence, and with
-penitent and obedient hearts confess our sins, that we may
-obtain forgiveness by his infinite goodness and mercy. </p>
-
-<p class = "normal2"><em>or this</em></p>
-
-<p class = "normal">Let us confess our sins against
-God and our neighbor. <br>
+<p class = "normal">{{confession}}
 </p>
+
+<p class = "normal2 directions"><em>or this</em></p>
 
 <p class = "normal2 directions"><em>Silence may be kept.</em> </p>
 
@@ -222,7 +208,7 @@ chapter and verse may be added. </em></p>
 <p class = "normal5"><strong>{{canticle1["number"]}}</strong>&nbsp;&nbsp;&nbsp;
     <strong>{{canticle1["title"]}}</strong>&nbsp;&nbsp;&nbsp; <em>{{canticle1["latin_title"]}}</em>
     <br>
-    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <span class = "normal2"><em>{{canticle1.get("verse")}}</em></span>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <span class = "normal2"><em>{{canticle1.get("verse", "")}}</em></span>
 </p>
 
 {{canticle1["text"] | safe}}
@@ -233,7 +219,7 @@ chapter and verse may be added. </em></p>
 <p class = "normal5"><strong>{{canticle2["number"]}}</strong>&nbsp;&nbsp;&nbsp;
     <strong>{{canticle2["title"]}}</strong>&nbsp;&nbsp;&nbsp; <em>{{canticle2["latin_title"]}}</em>
     <br>
-    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <span class = "normal2"><em>{{canticle2.get("verse")}}</em></span>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <span class = "normal2"><em>{{canticle2.get("verse", "")}}</em></span>
 </p>
 
 {{canticle2["text"] | safe}}
@@ -309,12 +295,12 @@ together, all standing</em></p>
     The People stand or kneel </em>
 </p>
 
-<p class = "normal2">
-    <span class="directions">
+<p class = "normal">
+    <span class="directions normal2">
         <em>Officiant</em>
     </span>
     &nbsp;&nbsp;&nbsp; The Lord be with you. <br>
-    <span class="directions">
+    <span class="directions normal2">
         <em>People</em>
     </span>
     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;And also with you. <br>
@@ -325,7 +311,7 @@ together, all standing</em></p>
 
 <p class = "normal2 directions"><em>Officiant and People
 </em></p>
-<div align="center"><center>
+<div align="center" class="normal">
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
     <tr>
@@ -364,168 +350,45 @@ together, all standing</em></p>
         &nbsp;&nbsp;&nbsp; now and for ever. Amen.</td>
     </tr>
 </table>
-</center></div>
+</div>
 
-<p class = "normal2"><em>Then follows one of
+<p class = "added normal">
+    <strong>Suffrages</strong>
+</p>
+
+<p class = "normal2 directions"><em>Then follows one of
 these sets of Suffrages </em></p>
 
-<p class = "normal">&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp; <strong>A</strong> </p>
+{{suffrages | safe}}
 
-<p class = "normal">V.&nbsp;&nbsp;&nbsp; Show us your
-mercy, O Lord; <br>
-R.&nbsp;&nbsp;&nbsp; And grant us your salvation. <br>
-V.&nbsp;&nbsp;&nbsp; Clothe your ministers with righteousness; <br>
-R.&nbsp;&nbsp;&nbsp; Let your people sing with joy. <br>
-V.&nbsp;&nbsp;&nbsp; Give peace, O Lord, in all the world; <br>
-R.&nbsp;&nbsp;&nbsp; For only in you can we live in safety. <br>
-V.&nbsp;&nbsp;&nbsp; Lord, keep
-this nation under your care; <br>
-R.&nbsp;&nbsp;&nbsp; And guide us in the way of justice and
-truth. <br>
-V.&nbsp;&nbsp;&nbsp; Let your way be known upon earth; <br>
-R.&nbsp;&nbsp;&nbsp; Your saving health among all nations. <br>
-V.&nbsp;&nbsp;&nbsp; Let not the needy, O Lord, be forgotten; <br>
-R.&nbsp;&nbsp;&nbsp; Nor the hope of the poor be taken away. <br>
-V.&nbsp;&nbsp;&nbsp; Create in us clean hearts, O God; <br>
-R.&nbsp;&nbsp;&nbsp; And sustain us with your Holy Spirit. </p>
-
-<p class = "normal">&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp; <strong>B </strong></p>
-
-<p class = "normal">V.&nbsp;&nbsp;&nbsp; Save your
-people, Lord, and bless your inheritance; <br>
-R.&nbsp;&nbsp;&nbsp; Govern them and uphold them, now and always.
-<br>
-V.&nbsp;&nbsp;&nbsp; Day by day we bless you; <br>
-R.&nbsp;&nbsp;&nbsp; We praise your name for ever. <br>
-V.&nbsp;&nbsp;&nbsp; Lord, keep us from all sin today; <br>
-R.&nbsp;&nbsp;&nbsp; Have mercy upon us, Lord, have mercy. <br>
-V.&nbsp;&nbsp;&nbsp; Lord, show us your love and mercy; <br>
-R.&nbsp;&nbsp;&nbsp; For we put our trust in you. <br>
-V.&nbsp;&nbsp;&nbsp; In you, Lord, is our hope; <br>
-R.&nbsp;&nbsp;&nbsp; And we shall never hope in vain. </p>
-
-<p class = "normal2"><em>The Officiant then
+<p class = "normal2 directions"><em>The Officiant then
 says one or more of the following Collects </em></p>
 
-<p class = "normal"><em>The Collect of the Day </em></p>
+<p class = "normal directions"><em>The Collect of the Day </em></p>
 
-<p class = "normal"><em><a name="Sunday"></a>A Collect for Sundays </em></p>
+{% for collect in collects %}
 
-<p class = "normal">O God, you make us glad with the
-weekly remembrance of <br>
-the glorious resurrection of your Son our Lord: Give us this <br>
-day such blessing through our worship of you, that the week <br>
-to come may be spent in your favor; through Jesus Christ our <br>
-Lord. <em>Amen.</em> </p>
+<p class = "normal"><em>{{collect['Title']}}</em></p>
 
-<p class = "normal"><em><a name="Friday"></a>A Collect for Fridays </em></p>
+<p class = "normal">{{collect['Text']}} <em>Amen.</em> </p>
 
-<p class = "normal">Almighty God, whose most dear Son
-went not up to joy but <br>
-first he suffered pain, and entered not into glory before he <br>
-was crucified: Mercifully grant that we, walking in the way <br>
-of the cross, may find it none other than the way of life and <br>
-peace; through Jesus Christ our Lord. <em>Amen.</em></p>
+{% endfor %}
 
-<p class = "normal"><em><br>
-<a name="Saturday"></a>A Collect for Saturdays </em></p>
+<p class = "added normal">
+    <em>A Prayer for Mission</em>
+</p>
 
-<p class = "normal">Almighty God, who after the
-creation of the world rested <br>
-from all your works and sanctified a day of rest for all your <br>
-creatures: Grant that we, putting away all earthly anxieties, <br>
-may be duly prepared for the service of your sanctuary, and <br>
-that our rest here upon earth may be a preparation for the <br>
-eternal rest promised to your people in heaven; through Jesus <br>
-Christ our Lord. <em>Amen.</em> </p>
-
-<p class = "normal"><br>
-<em>A Collect for the Renewal of Life </em></p>
-
-<p class = "normal">O God, the King eternal, whose
-light divides the day from the <br>
-night and turns the shadow of death into the morning: Drive <br>
-far from us all wrong desires, incline our hearts to keep your <br>
-law, and guide our feet into the way of peace; that, having <br>
-done your will with cheerfulness while it was day, we may, <br>
-when night comes, rejoice to give you thanks; through Jesus <br>
-Christ our Lord. <em>Amen.</em> </p>
-
-<p class = "normal"><br>
-<em>A Collect for Peace </em></p>
-
-<p class = "normal">O God, the author of peace and
-lover of concord, to know <br>
-you is eternal life and to serve you is perfect freedom: Defend <br>
-us, your humble servants, in all assaults of our enemies; that <br>
-we, surely trusting in your defense, may not fear the power of <br>
-any adversaries; through the might of Jesus Christ our Lord. <br>
-<em>Amen.</em></p>
-
-<p>&nbsp;</p>
-
-
-
-
-
-<p align="left">&nbsp;</p>
-
-<p class = "normal"><em>A Collect for Grace </em></p>
-
-<p class = "normal">Lord God, almighty and
-everlasting Father, you have <br>
-brought us in safety to this new day: Preserve us with your <br>
-mighty power, that we may not fall into sin, nor be overcome <br>
-by adversity; and in all we do, direct us to the fulfilling of <br>
-your purpose; through Jesus Christ our Lord. <em>Amen. </em></p>
-
-<p class = "normal"><br>
-<em>A Collect for Guidance </em></p>
-
-<p class = "normal">Heavenly Father, in you we live
-and move and have our <br>
-being: We humbly pray you so to guide and govern us by <br>
-your Holy Spirit, that in all the cares and occupations of our <br>
-life we may not forget you, but may remember that we are <br>
-ever walking in your sight; through Jesus Christ our Lord. <br>
-<em>Amen.</em></p>
-
-<p class = "normal"> </p>
-
-<p class = "normal2"><em>Then, unless the
-Eucharist or a form of general intercession is to follow, <br>
+<p class = "normal2 directions"><em>Then, unless the
+Eucharist or a form of general intercession is to follow,
 one of these prayers for mission is added </em></p>
 
-<p class = "normal"><a name="Mission"></a>Almighty and everlasting God, by
-whose Spirit the whole <br>
-body of thy faithful people is governed and sanctified: <br>
-Receive our supplications and prayers which we offer before <br>
-you for all members of your holy Church, that in their <br>
-vocation and ministry they may truly and devoutly serve you; <br>
-through our Lord and Savior Jesus Christ. <em>Amen.</em></p>
+<p class = "normal">
+    <a name="Mission"></a>{{mission_prayer}} <em>Amen.</em>
+</p>
 
-<p class = "normal2"><em>or this </em></p>
+<p class = "normal2 directions"><em>or this </em></p>
 
-<p class = "normal">O God, you have made of one blood
-all the peoples of the <br>
-earth, and sent your blessed Son to preach peace to those <br>
-who are far off and to those who are near: Grant that people <br>
-everywhere may seek after you and find you; bring the <br>
-nations into your fold; pour out your Spirit upon all flesh; <br>
-and hasten the coming of your kingdom; through Jesus <br>
-Christ our Lord. <em>Amen</em>. </p>
-
-<p class = "normal2"><em>or the following</em> </p>
-
-<p class = "normal">Lord Jesus Christ, you stretched
-out your arms of love on <br>
-the hard wood of the cross that everyone might come within <br>
-the reach of your saving embrace: So clothe us in your Spirit <br>
-that we, reaching forth our hands in love, may bring those <br>
-who do not know you to the knowledge and love of you; for <br>
-the honor of your Name. <em>Amen.</em> </p>
+<p class = "normal2 directions"><em>or the following</em> </p>
 
 <p class = "normal2 directions"><em>Here may be sung a
 hymn or anthem.</em> </p>
@@ -535,46 +398,10 @@ intercessions and thanksgivings may follow.</em> </p>
 
 <p class = "normal">&nbsp;</p>
 
-<p class = "normal2"><em>Before the close of
+<p class = "normal2 directions"><em>Before the close of
 the Office one or both of the following may be used</em> </p>
 
-<p class = "normal"><em><a name="Thanksgiving"></a>The General Thanksgiving</em></p>
-
-<p class = "normal2"><em>Officiant and People
-</em></p>
-
-<p class = "normal">Almighty God, Father of all
-mercies, <br>
-we your unworthy servants give you humble thanks <br>
-for all your goodness and loving-kindness <br>
-to us and to all whom you have made. <br>
-We bless you for our creation, preservation, <br>
-and all the blessings of this life; <br>
-but above all for your immeasurable love <br>
-in the redemption of the world by our Lord Jesus Christ; <br>
-for the means of grace, and for the hope of glory. <br>
-And, we pray, give us such an awareness of your mercies, <br>
-that with truly thankful hearts we may show forth your praise, <br>
-not only with our lips, but in our lives, <br>
-by giving up our selves to your service, <br>
-and by walking before you <br>
-in holiness and righteousness all our days; <br>
-through Jesus Christ our Lord, <br>
-to whom, with you and the Holy Spirit, <br>
-be honor and glory throughout all ages. Amen.</p>
-
-<p class = "normal"><em>A Prayer of St. Chrysostom </em></p>
-
-<p class = "normal">Almighty God, you have given us
-grace at this time with one <br>
-accord to make our common supplication to you; and you <br>
-have promised through your well-beloved Son that when two <br>
-or three are gathered together in his Name you will be in the <br>
-midst of them: Fulfill now, O Lord, our desires and petitions <br>
-as may be best for us; granting us in this world knowledge of <br>
-your truth, and in the age to come life everlasting. <em>Amen.</em></p>
-
-<p class = "normal"><em></em>&nbsp;</p>
+{{closing_prayer | safe}}
 
 <p class = "normal2 directions"><em>Then may be said </em></p>
 
@@ -583,38 +410,29 @@ your truth, and in the age to come life everlasting. <em>Amen.</em></p>
     Alleluia, alleluia.
     {% endif %}
     <br>
-    <em>Thanks be to God.
+    Thanks be to God.
     {% if season == "Easter" %}
     Alleluia, alleluia.
     {% endif %}
-    </em>
 </p>
 
 <p class = "normal2 directions"><em>From Easter Day
 through the Day of Pentecost &quot;Alleluia, alleluia&quot; may <br>
 be added to the preceding versicle and response. </em></p>
 
-<p class = "normal2"><em></em>&nbsp;</p>
+<p class = "added normal">
+    <strong>Closing Sentences</strong>
+</p>
 
-<p class = "normal2"><em>The Officiant may
+<p class = "normal2 directions"><em>The Officiant may
 then conclude with one of the following</em></p>
 
-<p class = "normal">The grace of our Lord Jesus
-Christ, and the love of God, and <br>
-the fellowship of the Holy Spirit, be with us all evermore. <br>
-<em>Amen.</em>&nbsp;&nbsp;&nbsp; <span class = "normal2"><em>2 Corinthians 13:14 </em></p>
-
-<p class = "normal">May the God of hope fill us with
-all joy and peace in <br>
-believing through the power of the Holy Spirit. <em>Amen.</em> <br>
-<span class = "normal2"><em>Romans 15:13 </em></p>
-
-<p class = "normal">Glory to God whose power, working
-in us, can do infinitely <br>
-more than we can ask or imagine: Glory to him from <br>
-generation to generation in the Church, and in Christ Jesus <br>
-for ever and ever. <em>Amen.</em>&nbsp;&nbsp;&nbsp; <span class = "normal2"><em>Ephesians 3:20,21</em> </p>
-
+<p class = "normal">
+    {{closing_sentences['text']}} <em>Amen.</em>&nbsp;&nbsp;&nbsp;
+    <span class = "normal2">
+        <em>{{closing_sentences['reference']}}</em>
+    </span>
+</p>
 
 </body>
 </html>

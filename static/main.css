@@ -48,15 +48,21 @@ body {
 
 .q1 {
     font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 .q2 {
     margin-left: 1.5rem;
     font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .q3 {
     margin-left: 3rem;
     font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .p {

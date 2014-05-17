@@ -52,6 +52,18 @@ with open('data/antiphons.json', 'r') as antiphons_json_data:
 with open('data/canticles.json', 'r') as canticles_json_data:
     canticles = json.load(canticles_json_data)
 
+with open('data/collect.json', 'r') as collect_json_data:
+    collects = json.load(collect_json_data)
+
+with open('data/mission.json', 'r') as mission_json_data:
+    mission_prayer = json.load(mission_json_data)
+
+with open('data/closing_sentences.json', 'r') as closing_json_data:
+    closing_sentences = json.load(closing_json_data)
+
+with open('data/confession.json', 'r') as confession_json_data:
+    confession = json.load(confession_json_data)
+
 def render_str(template, **params):
     t = jinja_env.get_template(template)
     return t.render(params)
@@ -238,6 +250,30 @@ def get_invit_psalm(week = None):
         invit_psalm = ipfile.read()
     return invit_psalm
 
+def get_suffrages():
+    """returns a random suffrage"""
+    file_name = random.choice(["suffrages_A.html", "suffrages_B.html"])
+    with open("templates/suffrages/" + file_name) as read_file:
+        text = read_file.read()
+    return text
+
+def get_collects(n = 2):
+    """returns a list of collects"""
+    #TODO: sample from extra collects based on day of week, week, and special days
+    return random.sample(collects['Any Time'], n)
+
+def get_mission_prayer():
+    """returns a prayer for mission"""
+    #TODO: sample from extra collects based on day of week, week, and special days
+    return random.choice(mission_prayer)
+
+def get_closing_prayer():
+    """returns a random closing prayer"""
+    file_name = random.choice(["general_thanksgiving.html", "st_crysostom_prayer.html"])
+    with open("templates/closing_prayer/" + file_name) as read_file:
+        text = read_file.read()
+    return text
+
 class MorningPrayer(BaseHandler):
     def get(self):
         todays_readings = get_todays_readings(self.request.get('date'))
@@ -256,7 +292,13 @@ class MorningPrayer(BaseHandler):
                     season = todays_readings['season'],
                     antiphon = get_antiphon(todays_readings['season']),
                     canticle1 = canticle1, canticle2 = canticle2,
-                    invit_psalm = get_invit_psalm())
+                    invit_psalm = get_invit_psalm(),
+                    suffrages = get_suffrages(),
+                    collects = get_collects(2),
+                    mission_prayer = get_mission_prayer(),
+                    closing_prayer = get_closing_prayer(),
+                    closing_sentences = random.choice(closing_sentences),
+                    confession = random.choice(confession))
 
 class UpdatePrayer(BaseHandler):
     def get(self):
