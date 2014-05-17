@@ -230,6 +230,14 @@ def get_canticles(number = 2):
             canticle["text"] = myfile.read()
     return cant_list
 
+def get_invit_psalm(week = None):
+    """returns a random invitatory psalm"""
+    #TODO: add Christ_Passover during Easter week
+    file_name = random.choice(["Jubilate.html", "Venite.html"])
+    with open("templates/invit_psalm/" + file_name) as ipfile:
+        invit_psalm = ipfile.read()
+    return invit_psalm
+
 class MorningPrayer(BaseHandler):
     def get(self):
         todays_readings = get_todays_readings(self.request.get('date'))
@@ -247,7 +255,8 @@ class MorningPrayer(BaseHandler):
                     opening_verse = opening['verse'],
                     season = todays_readings['season'],
                     antiphon = get_antiphon(todays_readings['season']),
-                    canticle1 = canticle1, canticle2 = canticle2)
+                    canticle1 = canticle1, canticle2 = canticle2,
+                    invit_psalm = get_invit_psalm())
 
 class UpdatePrayer(BaseHandler):
     def get(self):
