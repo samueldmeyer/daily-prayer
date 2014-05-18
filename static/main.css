@@ -1,8 +1,23 @@
+
 body {
     margin-left: 20%;
     margin-right: 35%;
     padding: 1%;
-    font-family:  "Goudy Old Style", sans-serif;
+    font-family:  "Goudy Old Style", serif;
+}
+
+@media all and (max-width: 1000px) and (min-width: 800px) {
+    body {
+        margin-left: 10%;
+        margin-right: 15%;
+    }
+}
+
+@media all and (max-width: 799px) {
+    body {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
 }
 
 .normal {
