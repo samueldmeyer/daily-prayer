@@ -114,17 +114,21 @@ def get_todays_readings(date, update = False):
             xml_text = url.read()
             root = ET.fromstring(xml_text)
             morning_psalm = root.findall("./info/psalm-1")[0].text
-            logging.error(morning_psalm)
+            logging.info(morning_psalm)
             morning_psalms = split_psalm(morning_psalm)
 
-            evening_psalm = root.findall("./info/psalm-2")[0].text
-            evening_psalms = split_psalm(evening_psalm)
+            evening_psalm_list = root.findall("./info/psalm-2")
+            if len(evening_psalm_list) > 0:
+                evening_psalm = evening_psalm_list[0].text
+                evening_psalms = split_psalm(evening_psalm)
+            else:
+                evening_psalms = morning_psalms
 
             ot_reading = root.findall("./info/ot")[0].text
             nt_reading = root.findall("./info/nt")[0].text
-            gospel_reading = root.findall(".info/gospel")[0].text
+            gospel_reading = root.findall("./info/gospel")[0].text
 
-            season = root.findall(".info/liturgical/season")[0].text
+            season = root.findall("./info/liturgical/season")[0].text
 
             readings = {"morn_psalm" : morning_psalms,
                         "even_psalm" : evening_psalms,
@@ -155,7 +159,7 @@ def calc_easter(year = datetime.date.today().year):
     return datetime.date(year, month, day)
 
 def calc_after_ascension(day = datetime.date.today(), year = datetime.date.today().year):
-    return day > calc_easter(year)
+    return day >= calc_easter(year) + datetime.timedelta(days = 40)
 
 def split_psalm(reference):
     """splits pslams when multiple are included together"""

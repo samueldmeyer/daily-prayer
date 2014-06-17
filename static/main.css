@@ -1,23 +1,14 @@
 
 body {
+    font-family:  "Goudy Old Style", serif;
+    margin: 0;
+    padding: 0;
+}
+
+.main_prayer {
     margin-left: 20%;
     margin-right: 35%;
     padding: 1%;
-    font-family:  "Goudy Old Style", serif;
-}
-
-@media all and (max-width: 1000px) and (min-width: 800px) {
-    body {
-        margin-left: 10%;
-        margin-right: 15%;
-    }
-}
-
-@media all and (max-width: 799px) {
-    body {
-        margin-left: 2%;
-        margin-right: 2%;
-    }
 }
 
 .normal {
@@ -50,6 +41,82 @@ body {
 
 .directions {
     display: none;
+}
+
+.header {
+    background: #28343b; /* Old browsers */
+    background: -moz-linear-gradient(top, #28343b 0%, #000000 79%, #828c95 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#28343b), color-stop(79%,#000000), color-stop(100%,#828c95)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #28343b 0%,#000000 79%,#828c95 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #28343b 0%,#000000 79%,#828c95 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #28343b 0%,#000000 79%,#828c95 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #28343b 0%,#000000 79%,#828c95 100%); /* W3C */
+    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#28343b', endColorstr='#828c95',GradientType=0 ); /* IE6-9 */
+
+    position: relative;
+    width: 80%;
+    border: 0;
+    padding-left: 20%;
+    /*padding: 0;*/
+    margin: 0;
+    top: 0;
+    left: 0;
+}
+
+.header-text {
+    color: white;
+}
+
+.header .right {
+    /*top: 50px;*/
+    top: 6pt;
+    right: 2pt;
+    background-color: transparent;
+    position: absolute;
+}
+
+.header .left {
+    /*top: 50px;*/
+    top: 6pt;
+    left: 2pt;
+    background-color: transparent;
+    position: absolute;
+}
+
+#setting-gear {
+    margin-right: 10px;
+}
+
+#settings {
+    display: none;
+}
+
+#date_input {
+    display: inline;
+}
+
+@media all and (max-width: 1000px) and (min-width: 800px) {
+    .main_prayer {
+        margin-left: 10%;
+        margin-right: 15%;
+    }
+
+    .header {
+        padding-left: 10%;
+        width: 90%;
+    }
+}
+
+@media all and (max-width: 799px) {
+    .main_prayer {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .header {
+        padding-left: 2%;
+        width: 98%;
+    }
 }
 
 /*styles for classes from Bible.org*/
