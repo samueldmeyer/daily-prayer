@@ -13,8 +13,8 @@
                 $("#settings").toggle();
             });
         });
-        {{fums_script | safe}}
     </script>
+    {{fums_script | safe}}
 </head>
 
 <body>
@@ -122,14 +122,6 @@ that we may delight in your will, <br>
 and walk in your ways, <br>
 to the glory of your Name. Amen. </p>
 
-<p>&nbsp;</p>
-
-
-
-
-
-<p align="right">&nbsp;</p>
-
 <p class = "normal2 directions"><em>The Priest alone
 stands and says</em></p>
 
@@ -198,7 +190,7 @@ Psalm </em></p>
 
 <p class = "normal2 directions"><em>Then follows </em></p>
 
-<p class = "normal"><strong>Psalms</strong> </p>
+<p class = "normal directions"><strong>Psalms</strong> </p>
 
 {{psalms | safe}}
 
@@ -212,8 +204,9 @@ be for ever. Amen. </p>
 
 <p>&nbsp;</p>
 
-<p><a name=lessons><span class = "normal4"><strong><a name="lessons"></a>The
-Lessons</strong></span><strong><br>
+<p class = "directions"><a name=lessons>
+    <span class = "normal4"><strong><a name="lessons"></a>The Lessons</strong>
+    </span><strong><br>
 </strong></p>
 
 <p class = "normal2 directions"><em>One or two lessons,
@@ -226,7 +219,28 @@ _______________. </p>
 chapter and verse may be added. </em></p>
 
 
+{{reading0 | safe}}
+
+<p class = "normal">
+    The Word of the Lord. <br>
+    Thanks be to God.
+</p>
+
+<p class = "normal5"><strong>{{canticle0["number"]}}</strong>&nbsp;&nbsp;&nbsp;
+    <strong>{{canticle0["title"]}}</strong>&nbsp;&nbsp;&nbsp; <em>{{canticle0["latin_title"]}}</em>
+    <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <span class = "normal2"><em>{{canticle0.get("verse", "")}}</em></span>
+</p>
+
+{{canticle0["text"] | safe}}
+
+<br>
 {{reading1 | safe}}
+
+<p class = "normal">
+    The Word of the Lord. <br>
+    Thanks be to God.
+</p>
 
 <p class = "normal5"><strong>{{canticle1["number"]}}</strong>&nbsp;&nbsp;&nbsp;
     <strong>{{canticle1["title"]}}</strong>&nbsp;&nbsp;&nbsp; <em>{{canticle1["latin_title"]}}</em>
@@ -239,16 +253,10 @@ chapter and verse may be added. </em></p>
 <br>
 {{reading2 | safe}}
 
-<p class = "normal5"><strong>{{canticle2["number"]}}</strong>&nbsp;&nbsp;&nbsp;
-    <strong>{{canticle2["title"]}}</strong>&nbsp;&nbsp;&nbsp; <em>{{canticle2["latin_title"]}}</em>
-    <br>
-    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <span class = "normal2"><em>{{canticle2.get("verse", "")}}</em></span>
+<p class = "normal">
+    The Word of the Lord. <br>
+    Thanks be to God.
 </p>
-
-{{canticle2["text"] | safe}}
-
-<br>
-{{reading3 | safe}}
 
 <p class = "normal directions">After each Lesson the Reader may
 say</p>
@@ -334,12 +342,13 @@ together, all standing</em></p>
 
 <p class = "normal2 directions"><em>Officiant and People
 </em></p>
-<div align="center" class="normal">
 
+<!--<div align="center" class="normal">
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
     <tr>
-        <td>Our Father, who art in
-        heaven,<br>
+        <td>
+        -->
+<p class="normal">Our Father, who art in heaven,<br>
         &nbsp;&nbsp;&nbsp; hallowed be thy Name, <br>
         &nbsp;&nbsp;&nbsp; thy kingdom come, <br>
         &nbsp;&nbsp;&nbsp; thy will be done, <br>
@@ -354,7 +363,10 @@ together, all standing</em></p>
         &nbsp;&nbsp;&nbsp; but deliver us from evil. <br>
         For thine is the kingdom, <br>
         &nbsp;&nbsp;&nbsp; and the power, and the glory, <br>
-        &nbsp;&nbsp;&nbsp; for ever and ever. Amen.</td>
+        &nbsp;&nbsp;&nbsp; for ever and ever. Amen.
+</p>
+
+<!--</td>
         <td>Our Father in heaven, <br>
         &nbsp;&nbsp;&nbsp; hallowed be your Name, <br>
         &nbsp;&nbsp;&nbsp; your kingdom come, <br>
@@ -373,7 +385,7 @@ together, all standing</em></p>
         &nbsp;&nbsp;&nbsp; now and for ever. Amen.</td>
     </tr>
 </table>
-</div>
+</div>-->
 
 <p class = "added normal">
     <strong>Suffrages</strong>
@@ -419,8 +431,6 @@ hymn or anthem.</em> </p>
 <p class = "normal2 directions"><em>Authorized
 intercessions and thanksgivings may follow.</em> </p>
 
-<p class = "normal">&nbsp;</p>
-
 <p class = "normal2 directions"><em>Before the close of
 the Office one or both of the following may be used</em> </p>
 
@@ -456,6 +466,13 @@ then conclude with one of the following</em></p>
         <em>{{closing_sentences['reference']}}</em>
     </span>
 </p>
+
+<br><br><br><br>
+
+<div class="copyright">
+    {{copyright | safe}}
+</div>
+
 </div>
 </body>
 </html>

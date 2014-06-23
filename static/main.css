@@ -36,7 +36,7 @@ body {
 }
 
 .copyright {
-    font-size: .9rem;
+    font-size: .8rem;
 }
 
 .directions {
@@ -120,11 +120,16 @@ body {
 }
 
 /*styles for classes from Bible.org*/
+
+/* section headers added by translator*/
 .s1 {
+    display: none;
     font-size: 1.3rem;
 }
 
+/* Seems to be for psalm directions */
 .d {
+    display: none;
     font-size: 1.1rem;
 }
 

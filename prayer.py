@@ -101,12 +101,12 @@ def get_todays_readings(date, update = False):
     update will refresh the cache"""
 
     if date is None:
-        # Offset for PST
+        # Should offset for PST
         date = time.strftime("%Y-%m-%d", time.gmtime(time.time()- time.timezone))
 
     readings_date = "readings_" + date
     readings = memcache.get(readings_date)
-    logging.error(readings_date)
+    logging.debug(readings_date)
     if readings is None or update:
         try:
             # ESV api runs in US/Central time, but can return dates if requested
@@ -179,17 +179,20 @@ def split_psalm(reference):
     return psalms
 
 def get_bible_passage(reference, translation='eng-ESV'):
-    """gets the text of a Bible passage from Bibles.org"""
+    """gets the text of a Bible passage from Bibles.org.
+    Returns a PassageInfo object."""
 
-    display = memcache.get(reference)
-    if display is None:
+    passage_info = memcache.get(reference)
+    if passage_info is None:
         if re.search(r'Philemon', reference):
             reference = re.sub('Philemon', 'Philemon 1:', reference)
         # See http://www.esvapi.org/v2/rest/readingPlanInfo?key=IP&reading-plan=bcp&date=2014-03-02 for apocrypha
         if re.search(r'Ecclus\.', reference):
             translation='eng-NABRE'
-        logging.debug("https://bibles.org/v2/passages.js?version=%s&q[]=%s" % (translation, urllib2.quote(reference)))
-        url = urllib2.urlopen("https://bibles.org/v2/passages.js?version=%s&q[]=%s" % (translation, urllib2.quote(reference)))
+        logging.debug("https://bibles.org/v2/passages.js?version=%s&q[]=%s" \
+            % (translation, urllib2.quote(reference)))
+        url = urllib2.urlopen("https://bibles.org/v2/passages.js?version=%s&q[]=%s" \
+            % (translation, urllib2.quote(reference)))
 
         json_text = url.read()
         try:
@@ -198,21 +201,25 @@ def get_bible_passage(reference, translation='eng-ESV'):
             passages = json_response['response']['search']['result']['passages']
             html_text = ''.join([x['text'] for x in passages])
             verse_display = ', '.join([x['display'] for x in passages])
-            copyright_display = json_response['response']['search']['result']['passages'][0]['copyright']
-            version = json_response['response']['search']['result']['passages'][0]['version_abbreviation']
-            fums = json_response['response']['meta']['fums_noscript']
-            display = '<h2 class="old_style"><strong>' + verse_display + " (" + version +")</strong></h2>" + \
-                html_text + '<br><span class = "copyright">' + copyright_display + "</span>" + fums
-            memcache.set(reference, display)
+            passage = passages[0]
+            copyright_display = passage['copyright']
+            version = passage['version_abbreviation']
+            fums = json_response['response']['meta']['fums']
+            display = '<h2 class="old_style"><strong>%s (%s)</strong></h2>%s" \
+                % (verse_display, version, ht)
+            passage_info = PassageInfo(display, copyright_display, fums)
+
+            memcache.set(reference, passage_info)
         except:
             logging.error("Failed to get reading")
-            display = "<p>Failed to get today's reading</p>"
-    return display
+            passage_info = PassageInfo("<p>Failed to get today's reading</p>", "", "")
+    return passage_info
 
 def get_psalms(references):
-    """references is a list of psalm references"""
+    """references is a list of psalm references.
+    Returns a list of PassageInfos"""
     passages = [get_bible_passage("Psalm " + str(x)) for x in references]
-    return " ".join(passages)
+    return passages
 
 def get_opening_sentences(season, day = None):
     """given a season (text), returns a dictionary with 'text' and 'verse"""
@@ -278,6 +285,13 @@ def get_closing_prayer():
         text = read_file.read()
     return text
 
+class PassageInfo:
+    # Holds text of a passage plus the copyright and fums information
+    def __init__(self, text, copyright_display, fums):
+        self.text = text
+        self.copyright_display = copyright_display
+        self.fums = fums
+
 class MorningPrayer(BaseHandler):
     def get(self):
         todays_readings = get_todays_readings(self.request.get('date'))
@@ -286,23 +300,34 @@ class MorningPrayer(BaseHandler):
         opening = get_opening_sentences(todays_readings['season'])
         opening_sentences = opening['text']
         opening_verse = opening['verse']
-        canticle1, canticle2 = get_canticles(2)
-        self.render('morning-prayer.html', reading1 = get_bible_passage(readings_reference[0]),
-                    reading2 = get_bible_passage(readings_reference[1]),
-                    reading3 = get_bible_passage(readings_reference[2]),
-                    psalms = get_psalms(psalm_reference),
+        canticle0, canticle1 = get_canticles(2)
+        reading0_info = get_bible_passage(readings_reference[0])
+        reading1_info = get_bible_passage(readings_reference[1])
+        reading2_info = get_bible_passage(readings_reference[2])
+        psalm_info = get_psalms(psalm_reference)
+        info_list = psalm_info + [reading0_info] + [reading1_info] + [reading2_info]
+        copyright = set([passage.copyright_display for passage in info_list])
+        copyright = "\n".join(copyright)
+        fums = "\n".join([passage.fums for passage in info_list])
+        self.render('morning-prayer.html', reading0 = reading0_info.text,
+                    reading1 = reading1_info.text,
+                    reading2 = reading2_info.text,
+                    psalms = " ".join([psalm.text for psalm in psalm_info]),
                     opening_sentences = opening['text'],
                     opening_verse = opening['verse'],
                     season = todays_readings['season'],
                     antiphon = get_antiphon(todays_readings['season']),
-                    canticle1 = canticle1, canticle2 = canticle2,
+                    canticle0 = canticle0, canticle1 = canticle1,
                     invit_psalm = get_invit_psalm(),
                     suffrages = get_suffrages(),
                     collects = get_collects(2),
                     mission_prayer = get_mission_prayer(),
                     closing_prayer = get_closing_prayer(),
                     closing_sentences = random.choice(closing_sentences),
-                    confession = random.choice(confession))
+                    confession = random.choice(confession),
+                    copyright = copyright,
+                    fums_script = fums
+                    )
 
 class UpdatePrayer(BaseHandler):
     def get(self):
