@@ -205,8 +205,8 @@ def get_bible_passage(reference, translation='eng-ESV'):
             copyright_display = passage['copyright']
             version = passage['version_abbreviation']
             fums = json_response['response']['meta']['fums']
-            display = '<h2 class="old_style"><strong>%s (%s)</strong></h2>%s" \
-                % (verse_display, version, ht)
+            display = '<h2 class="old_style"><strong>%s (%s)</strong></h2>%s' \
+                % (verse_display, version, html_text)
             passage_info = PassageInfo(display, copyright_display, fums)
 
             memcache.set(reference, passage_info)

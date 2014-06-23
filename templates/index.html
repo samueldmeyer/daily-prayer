@@ -5,6 +5,17 @@
     <title>Aerial Valor</title>
     <link type="text/css" rel="stylesheet" href="/static/main.css" />
     <link rel="shortcut icon" href="/favicon.ico">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var username = "aerial.valor.326";
+            var hostname = "gmail.com";
+            var linktext = username + "@" + hostname;
+            var contact = $("<a>" + linktext + "</a>");
+            contact.attr("href", "mailto:" + linktext);
+            $("#contact").append(contact);
+        });
+    </script>
 </head>
 
 <body>
@@ -13,19 +24,15 @@
     <ul><li>
         <a href="/prayer/morningprayer">Morning Prayer</a>
     </li></lin></ul>
-    <div id = "contact">Feedback appreciated at: </div>
+    <div>
+        We're on GitHub at
+        <a href="https://github.com/waternova/aerial-valor-326">
+            https://github.com/waternova/aerial-valor-326
+        </a>
+    </div>
+    <div id = "contact">Alternatively, feedback appreciated at: </div>
 </body>
 
-<script type="text/javascript">
-//(function(){
-var el = document.createElement('a');
-var username = "aerial.valor.326";
-var hostname = "gmail.com";
-var linktext = username + "@" + hostname ;
-el.innerText = linktext;
-el.setAttribute("href", "mail" + "to:" + linktext);
-document.getElementById("contact").appendChild(el);
-//}());
-</script>
+
 
 </html>
