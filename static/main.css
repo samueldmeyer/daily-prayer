@@ -114,8 +114,12 @@ body {
     }
 
     .header {
-        padding-left: 2%;
-        width: 98%;
+        padding-left: 10%;
+        width: 90%;
+    }
+
+    .wide {
+        display: none;
     }
 }
 
