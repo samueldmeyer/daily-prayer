@@ -1,12 +1,19 @@
-aerial-valor-326
+Daily-Prayer
 ===============
 
-code for aerial-valor-326.appspot.com
+This is the code for daily-prayer.appspot.com, a website with daily updating
+prayers, according to the Book of Common Prayer of the Episcopal Church.
+It is hosted on Google App Engine, and currently uses the api's from esvapi.org
+and bibles.org to collect the readings for each day.
+
+
+
+Other appreciated sources are below:
 
 Gear icon from
 http://www.iconsdb.com/dark-gray-icons/gear-icon.html
 
-Home from
+Home icon from
 http://www.iconsdb.com/dark-gray-icons/home-6-icon.html
 
 Favicon from
