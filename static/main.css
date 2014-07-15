@@ -83,6 +83,16 @@ body {
     position: absolute;
 }
 
+.black-link {
+    color: black;
+    text-decoration: none;
+}
+
+.black-link:hover {
+    color: black;
+    text-decoration: underline;
+}
+
 #setting-gear {
     margin-right: 10px;
 }

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="/static/main.css" />
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="header">
+            <a href="/"><img src="/static/home-6-24.png" class="left"></a>
+            {% block page_header %}
+            {% endblock %}
+        </div>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

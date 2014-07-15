@@ -1,47 +1,45 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width">
-    <meta name="description" content="Daily Morning Prayer according to the Book of
-        Common Prayer of the Episcopal Church">
-    <meta property="og:description" content="Daily Morning Prayer according to the Book of
-        Common Prayer of the Episcopal Church, updating daily, and with open source code">
-    <meta property="og:url" content="http://aerial-valor-326.appspot.com/prayer/morningprayer">
-    <meta property="og:title" content="Morning Prayer">
-    <meta property="og:image" content="http://aerial-valor-326.appspot.com/static/ElRIDO_Celtic_Triad.png">
-    <title>Morning Prayer: Rite Two</title>
-    <link type="text/css" rel="stylesheet" href="/static/main.css" />
-    <link rel="shortcut icon" href="/favicon.ico">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
-    <script>
-        $(document).ready(function() {
-            $("#setting-gear").click(function() {
-                $("#settings").toggle();
-            });
+{% block head %}
+<meta name="viewport" content="width=device-width">
+<meta name="description" content="Daily Morning Prayer according to the Book of
+    Common Prayer of the Episcopal Church">
+<meta property="og:description" content="Daily Morning Prayer according to the Book of
+    Common Prayer of the Episcopal Church, updating daily, and with open source code">
+<meta property="og:url" content="http://aerial-valor-326.appspot.com/prayer/morningprayer">
+<meta property="og:title" content="Morning Prayer">
+<meta property="og:image" content="http://aerial-valor-326.appspot.com/static/ElRIDO_Celtic_Triad.png">
+<title>Morning Prayer: Rite Two</title>
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+<script>
+    $(document).ready(function() {
+        $("#setting-gear").click(function() {
+            $("#settings").toggle();
         });
-    </script>
-    {{fums_script | safe}}
-</head>
+    });
+</script>
+{{fums_script | safe}}
+{% endblock %}
 
-<body>
-    <div class="header">
-        <a href="/"><img src="/static/home-6-24.png" class="left"></a>
-        <span class="header-text normal5">
-            <span class="wide">Daily Morning </span>Prayer
-        </span>
-        <img src="/static/gear-24.png" id = "setting-gear" class="right">
-        <div id = "settings">
-            <form id="date_input" method="get">
-                <span class="header-text">Date: </span>
-                <input type="date" name="date" value="YYYY-MM-DD">
-                <input type="submit" value="Go">
-            </form>
-        </div>
-    </div>
+{% block page_header %}
+<span class="header-text normal5">
+    <span class="wide">Daily Morning </span>Prayer
+</span>
+<img src="/static/gear-24.png" id = "setting-gear" class="right">
+<div id = "settings">
+    <form id="date_input" method="get">
+        <span class="header-text">Date: </span>
+        <input type="date" name="date" value="YYYY-MM-DD">
+        <input type="submit" value="Go">
+    </form>
+</div>
+{% endblock %}
 
-    <div class="main_prayer">
-    <div style="height: 10px"></div>
+{% block content %}
+
+<div class="main_prayer">
+<div style="height: 10px"></div>
 <span class = directions>
 <p class = "normal"><b><i>Concerning the Service</i></b>
 </p>
@@ -483,5 +481,4 @@ then conclude with one of the following</em></p>
 </div>
 
 </div>
-</body>
-</html>
+{% endblock %}
