@@ -13,6 +13,8 @@ import random
 import webapp2
 import jinja2
 
+random.seed()
+
 #from google.appengine.ext import db
 from google.appengine.api import memcache
 
