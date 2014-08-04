@@ -15,8 +15,9 @@ import jinja2
 
 random.seed()
 
-#from google.appengine.ext import db
+from google.appengine.ext import db
 from google.appengine.api import memcache
+from google.appengine.api import mail
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
@@ -44,7 +45,14 @@ opener = urllib2.build_opener(handler)
 urllib2.install_opener(opener)
 
 
-# Load data
+### database
+class FeedbackModel(db.Model):
+    email = db.EmailProperty()
+    content = db.TextProperty(required = True)
+    created = db.DateTimeProperty(auto_now_add = True)
+
+
+### Load data
 with open('data/opening_sentences.json', 'r') as opening_sentences_json_data:
     opening_sentences = json.load(opening_sentences_json_data)
 
@@ -287,6 +295,28 @@ def get_closing_prayer():
         text = read_file.read()
     return text
 
+
+def send_email(content):
+    """sends an email to notify that feedback has been recieved.
+    This should be removed once there is enough feedback that this becomes
+    extremely annoying"""
+
+    with open('data/email.json', 'r') as email_data:
+        email_info = json.load(email_data)
+    admin_user = email_info['admin_user']
+
+    message = mail.EmailMessage(sender=admin_user,
+                            subject="Feedback from daily-prayer.appspot.com")
+
+    message.to = admin_user
+    message.body = content
+
+    try:
+        message.send()
+        logging.debug('successfully sent the mail')
+    except:
+        logging.error('failed to send mail')
+
 class PassageInfo:
     # Holds text of a passage plus the copyright and fums information
     def __init__(self, text, copyright_display, fums):
@@ -342,12 +372,36 @@ class UpdatePrayer(BaseHandler):
         get_psalms(psalm_reference)
         self.write("<p>Updated</p>")
 
+class Feedback(BaseHandler):
+    def get(self):
+        self.render('feedback.html')
+
+    def post(self):
+        result = ""
+        content = self.request.get("content")
+        email = self.request.get("email")
+
+        if content:
+            if email:
+                feedback = FeedbackModel(content = content, email = email)
+            else:
+                feedback = FeedbackModel(content = content)
+            feedback.put()
+            result = "success"
+            send_email(email + " " + content)
+        else:
+            result = "fail"
+
+
+        self.render('feedback.html', result = result)
+
 class FrontPage(BaseHandler):
     def get(self):
         self.render('index.html')
 
 app = webapp2.WSGIApplication([('/', FrontPage),
                                ('/prayer/morningprayer', MorningPrayer),
-                               ('/tasks/updateprayers', UpdatePrayer)
+                               ('/tasks/updateprayers', UpdatePrayer),
+                               ('/feedback', Feedback)
                                ],
                               debug=True)

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Feedback - Daily Prayer</title>
+<link type="text/css" rel="stylesheet" href="/static/main.css" />
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+{% endblock %}
+
+{% block page_header %}
+<span class="header-text normal5">
+    Feedback
+</span>
+{% endblock %}
+
+{% block content %}
+<br><br>
+<div class="main_prayer">
+    <p class="normal">
+        {% if result == "success" %}
+            Got it! We'll take a look soon.
+        {% elif result == "fail" %}
+            You need to enter something....
+        {% else %}
+            Thanks for your feedback! We will use what you give us to make this site
+            better for everyone. If you would like us to let you know what we do
+            about issues you find, please include an email address.
+        {% endif %}
+    </p>
+    <form method="post">
+        <textarea name="content" rows=10 cols=50></textarea><br>
+        <input name="email" type="email" placeholder="me@example.com"></input><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+{% endblock %}
