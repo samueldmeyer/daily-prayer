@@ -5,6 +5,18 @@ body {
     padding: 0;
 }
 
+textarea.feedback {
+    width: 100%;
+    height: 200px;
+}
+
+#feedback-email {
+    height: 40px;
+    width: 250px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
 .main_prayer {
     margin-left: 20%;
     margin-right: 35%;
