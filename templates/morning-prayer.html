@@ -11,13 +11,7 @@
 <title>Morning Prayer: Rite Two</title>
 <link rel="shortcut icon" href="/favicon.ico">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
-<script>
-    $(document).ready(function() {
-        $("#setting-gear").click(function() {
-            $("#settings").toggle();
-        });
-    });
-</script>
+<script type="text/javascript" src="/static/morningprayer.js"></script>
 {{fums_script | safe}}
 {% endblock %}
 
@@ -84,16 +78,12 @@ on page 80.</i></a></p>
 
 <p class = "normal">{{opening_sentences | safe}}&nbsp;&nbsp;&nbsp;
     <span class = "normal2"><i>{{opening_verse}}</i></p>
-<p>&nbsp;</p>
-
-
-<p class="directions">&nbsp;</p>
 
 <p class = "normal2 directions"><em>The following
 Confession of Sin may then be said; or the Office may
 continue at once with &quot;Lord, open our lips.&quot;</em> </p>
 
-<p>
+<p class="normal">
     <a name=confession>
         <strong>
             <a name="Confession"></a>Confession of Sin
@@ -132,7 +122,7 @@ to the glory of your Name. Amen. </p>
 stands and says</em></p>
 
 <p class = "normal">Almighty God have mercy on us,
-forgive us all your sins
+forgive us all our sins
 through our Lord Jesus Christ, strengthen us in all
 goodness, and by the power of the Holy Spirit keep us in
 eternal life. <em>Amen.</em> </p>
@@ -198,7 +188,9 @@ Psalm </em></p>
 
 <p class = "normal directions"><strong>Psalms</strong> </p>
 
+<div id = "psalms">
 {{psalms | safe}}
+</div>
 
 <p class = "normal2 directions"><em>At the end of the
 Psalms is sung or said</em></p>
@@ -224,8 +216,9 @@ _______________. </p>
 <p class = "normal2 directions"><em>A citation giving
 chapter and verse may be added. </em></p>
 
-
+<div id = "reading0">
 {{reading0 | safe}}
+</div>
 
 <p class = "normal">
     The Word of the Lord. <br>
@@ -241,7 +234,9 @@ chapter and verse may be added. </em></p>
 {{canticle0["text"] | safe}}
 
 <br>
+<div id = "reading1">
 {{reading1 | safe}}
+</div>
 
 <p class = "normal">
     The Word of the Lord. <br>
@@ -257,7 +252,9 @@ chapter and verse may be added. </em></p>
 {{canticle1["text"] | safe}}
 
 <br>
+<div id = "reading2">
 {{reading2 | safe}}
+</div>
 
 <p class = "normal">
     The Word of the Lord. <br>
@@ -475,7 +472,7 @@ then conclude with one of the following</em></p>
 
 <br><br><br><br>
 
-<div class="copyright">
+<div id="copyright">
     {{copyright | safe}}
 </div>
 

@@ -106,9 +106,10 @@ class BaseHandler(webapp2.RequestHandler):
         return cookie_val and check_secure_val(cookie_val)
 
 
-def get_todays_readings(date, update = False):
+def get_todays_readings(date, update = False, wait_for_response = False):
     """Get's today's readings- a dictionary of lists of Bible references
-    update will refresh the cache"""
+    update=True will refresh the cache
+    wait_for_response=True will refresh the cache if it misses"""
 
     if date is None:
         # Should offset for PST
@@ -117,7 +118,7 @@ def get_todays_readings(date, update = False):
     readings_date = "readings_" + date
     readings = memcache.get(readings_date)
     logging.debug(readings_date)
-    if readings is None or update:
+    if update or (wait_for_response and readings is None):
         try:
             # ESV api runs in US/Central time, but can return dates if requested
             url = urllib2.urlopen("http://www.esvapi.org/v2/rest/readingPlanInfo?key=IP&reading-plan=bcp&date=%s" % (date))
@@ -140,10 +141,12 @@ def get_todays_readings(date, update = False):
 
             season = root.findall("./info/liturgical/season")[0].text
 
-            readings = {"morn_psalm" : morning_psalms,
-                        "even_psalm" : evening_psalms,
-                        "readings" : [ot_reading, nt_reading, gospel_reading],
-                        "season" : season}
+            readings = {
+                "morn_psalm" : morning_psalms,
+                "even_psalm" : evening_psalms,
+                "readings" : [ot_reading, nt_reading, gospel_reading],
+                "season" : season
+            }
 
             memcache.set(readings_date, readings)
         except:
@@ -151,7 +154,19 @@ def get_todays_readings(date, update = False):
 
             memcache.delete(readings_date)
 
-            readings = {"morn_psalm": [1], "even_psalm": [1], "readings": ["Gen. 1:1", "Gen. 1:1", "Gen. 1:1"], "season": "At any Time"}
+            readings = {
+                "morn_psalm": None,
+                "even_psalm": None,
+                "readings": None,
+                "season": "Proper"
+            }
+    elif readings is None:       #Assume it is the largest part of the year if not cached
+        readings = {
+            "morn_psalm": None,
+            "even_psalm": None,
+            "readings": None,
+            "season": "Proper"
+        }
     return readings
 
 def calc_easter(year = datetime.date.today().year):
@@ -295,6 +310,12 @@ def get_closing_prayer():
         text = read_file.read()
     return text
 
+def get_copyright(info_list):
+    """gets a concatentated list of unique copyrights from a list of PassageInfo
+    objects."""
+    copyright = set([passage.copyright_display for passage in info_list])
+    return "\n".join(copyright)
+
 
 def send_email(content):
     """sends an email to notify that feedback has been recieved.
@@ -324,6 +345,11 @@ class PassageInfo:
         self.copyright_display = copyright_display
         self.fums = fums
 
+    @staticmethod
+    def join_text(passage_info_list):
+        """used on lists of passageInfo"""
+        return " ".join([passage.text for passage in passage_info_list])
+
 class MorningPrayer(BaseHandler):
     def get(self):
         todays_readings = get_todays_readings(self.request.get('date'))
@@ -333,18 +359,24 @@ class MorningPrayer(BaseHandler):
         opening_sentences = opening['text']
         opening_verse = opening['verse']
         canticle0, canticle1 = get_canticles(2)
-        reading0_info = get_bible_passage(readings_reference[0])
-        reading1_info = get_bible_passage(readings_reference[1])
-        reading2_info = get_bible_passage(readings_reference[2])
-        psalm_info = get_psalms(psalm_reference)
-        info_list = psalm_info + [reading0_info] + [reading1_info] + [reading2_info]
-        copyright = set([passage.copyright_display for passage in info_list])
-        copyright = "\n".join(copyright)
+        if readings_reference is None:
+            reading_info_all = PassageInfo("Getting today's reading...", "", "")
+            reading0_info = reading_info_all
+            reading1_info = reading_info_all
+            reading2_info = reading_info_all
+            psalm_info_list = [reading_info_all]
+        else:
+            reading0_info = get_bible_passage(readings_reference[0])
+            reading1_info = get_bible_passage(readings_reference[1])
+            reading2_info = get_bible_passage(readings_reference[2])
+            psalm_info_list = get_psalms(psalm_reference)
+        info_list = psalm_info_list + [reading0_info] + [reading1_info] + [reading2_info]
+        copyright = get_copyright(info_list)
         fums = "\n".join([passage.fums for passage in info_list])
         self.render('morning-prayer.html', reading0 = reading0_info.text,
                     reading1 = reading1_info.text,
                     reading2 = reading2_info.text,
-                    psalms = " ".join([psalm.text for psalm in psalm_info]),
+                    psalms = PassageInfo.join_text(psalm_info_list),
                     opening_sentences = opening['text'],
                     opening_verse = opening['verse'],
                     season = todays_readings['season'],
@@ -399,9 +431,30 @@ class FrontPage(BaseHandler):
     def get(self):
         self.render('index.html')
 
+class DailyReadingsJson(BaseHandler):
+    def get(self):
+        todays_readings = get_todays_readings(self.request.get('date'), wait_for_response = True)
+        readings_reference = todays_readings['readings']
+        psalm_reference = todays_readings['morn_psalm']
+        reading0_info = get_bible_passage(readings_reference[0])
+        reading1_info = get_bible_passage(readings_reference[1])
+        reading2_info = get_bible_passage(readings_reference[2])
+        psalm_info_list = get_psalms(psalm_reference)
+        info_list = psalm_info_list + [reading0_info] + [reading1_info] + [reading2_info]
+        copyright = get_copyright(info_list)
+        output = {
+            "reading0": get_bible_passage(readings_reference[0]).text,
+            "reading1": get_bible_passage(readings_reference[1]).text,
+            "reading2": get_bible_passage(readings_reference[2]).text,
+            "psalms": PassageInfo.join_text(psalm_info_list),
+            "copyright": copyright
+        }
+        self.render_json(output)
+
 app = webapp2.WSGIApplication([('/', FrontPage),
                                ('/prayer/morningprayer', MorningPrayer),
                                ('/tasks/updateprayers', UpdatePrayer),
-                               ('/feedback', Feedback)
+                               ('/feedback', Feedback),
+                               ('/prayer/morningprayer/readings.json', DailyReadingsJson)
                                ],
                               debug=True)
