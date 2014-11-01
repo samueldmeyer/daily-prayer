@@ -213,7 +213,7 @@ def get_bible_passage(reference, translation='eng-ESV'):
             reference = re.sub('Philemon', 'Philemon 1:', reference)
         # See http://www.esvapi.org/v2/rest/readingPlanInfo?key=IP&reading-plan=bcp&date=2014-03-02 for apocrypha
         if re.search(r'Ecclus\.', reference):
-            translation='eng-NABRE'
+            translation='eng-GNBDC'
         logging.debug("https://bibles.org/v2/passages.js?version=%s&q[]=%s" \
             % (translation, urllib2.quote(reference)))
         url = urllib2.urlopen("https://bibles.org/v2/passages.js?version=%s&q[]=%s" \
