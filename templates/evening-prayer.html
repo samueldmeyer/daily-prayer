@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block head %}
-<meta name="description" content="Daily Morning Prayer according to the Book of
+<meta name="description" content="Daily Evening Prayer according to the Book of
     Common Prayer of the Episcopal Church">
-<meta property="og:description" content="Daily Morning Prayer according to the Book of
+<meta property="og:description" content="Daily Evening Prayer according to the Book of
     Common Prayer of the Episcopal Church, updating daily, all with open source code.">
-<meta property="og:url" content="http://daily-prayer.appspot.com/prayer/morningprayer">
-<meta property="og:title" content="Morning Prayer">
+<meta property="og:url" content="http://daily-prayer.appspot.com/prayer/eveningprayer">
+<meta property="og:title" content="Evening Prayer">
 <meta property="og:image" content="http://daily-prayer.appspot.com/static/ElRIDO_Celtic_Triad.png">
-<title>Morning Prayer: Rite Two</title>
+<title>Evening Prayer: Rite Two</title>
 <link rel="shortcut icon" href="/favicon.ico">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
 <script type="text/javascript" src="/static/morningprayer.js"></script>
@@ -17,7 +17,7 @@
 
 {% block page_header %}
 <span class="header-text normal5">
-    <span class="wide">Daily Morning </span>Prayer
+    <span class="wide">Daily Evening </span>Prayer
 </span>
 <img src="/static/gear-24.png" id = "setting-gear" class="right">
 <div id = "settings">
@@ -33,40 +33,23 @@
 
 <div class="main_prayer">
 <div style="height: 10px"></div>
-<span class = directions>
-<p class = "normal"><b><i>Concerning the Service</i></b>
-</p>
 
-<p class = "normal2">In the Daily Office, the
-term &quot;Officiant&quot; is used to denote the person,<br>
-clerical or lay, who leads the Office. </p>
+<p class="normal5 directions"><b>Daily Morning Prayer: Rite Two </b></p>
 
-<p class = "normal2">It is appropriate that
-other persons be assigned to read the Lessons, and <br>
-to lead other parts of the service not assigned to the officiant.
-The bishop, <br>
-when present, apporpriately concludes the Office with a blessing.
-</p>
+<span class="directions">
+    <p class="normal2"><a id="sentences"><i>
+        The Officiant begins the service with one or more of the following
+        sentences of Scripture, or of those on pages 75-78; 
+        <br>
+        or with the Service of Light on pages 109-112, and continuing with the 
+        appointed Psalmody; 
+        <br>
+        or with the versicle "O God, make speed to save us" on page 117
+    </i></a></p>
 
-<p class = "normal2">At celebrations of the
-Holy Eucharist, the Order for Morning or Evening <br>
-Prayer may be used in place of all that precedes the Offertory. </p>
-
-<p class = "normal2">Additional Directions
-are on page 141. </p>
-
-<p class = "normal"><br>
-</p>
-
+    <p class="normal"><br></p>
 </span>
 
-<p class = "normal5 directions"><b>Daily Morning Prayer: Rite Two </b></p>
-
-<p class = "normal2 directions"><a id="sentences"><i>The
-Officiant begins the service with one or more of these sentences
-of
-Scripture, or with the versicle &quot;Lord, open our lips&quot;
-on page 80.</i></a></p>
 
 <a id="Sentences"></a>
 {% if season == "Easter" %}
@@ -76,12 +59,15 @@ on page 80.</i></a></p>
 </p>
 {% endif %}
 
-<p class = "normal">{{opening_sentences | safe}}&nbsp;&nbsp;&nbsp;
-    <span class = "normal2"><i>{{opening_verse}}</i></p>
+<p class = "normal">
+    {{opening_sentences | safe}}&nbsp;&nbsp;&nbsp;
+    <span class = "normal2"><i>{{opening_verse}}</i></span>
+</p>
 
 <p class = "normal2 directions"><em>The following
-Confession of Sin may then be said; or the Office may
-continue at once with &quot;Lord, open our lips.&quot;</em> </p>
+    Confession of Sin may then be said; or the Office may
+    continue at once with &quot;O God make speed to save us.&quot;</em> 
+</p>
 
 <p class="normal">
     <strong>
@@ -142,11 +128,13 @@ substitutes &quot;us&quot; for &quot;you&quot; and
     <span class = "directions normal2">
         <em>Officiant</em>&nbsp;&nbsp;&nbsp;
     </span>
-    Lord, open our lips. <br>
+    O God, make speed to save us.
+    <br>
     <span class = "directions normal2">
         <em>People</em> &nbsp;&nbsp;&nbsp; &nbsp;
     </span>
-    And our mouth shall proclaim your praise. <br>
+    O Lord, make haste to help us.
+    <br>
 </p>
 
 <p class = "normal2 directions"><em>Officiant and People
@@ -167,25 +155,20 @@ substitutes &quot;us&quot; for &quot;you&quot; and
 
  </p>
 
-<p class = "normal2 directions"><em>Then follows one of
-the Invitatory Psalms, Venite or Jubilate. </em></p>
+<p class = "normal2 directions"><em>
+    The following, or some other suitable hymn, or an Invitatory Psalm, may 
+    be sung or said.
+</em></p>
 
 <p class = "added normal">
     <strong>Invitatory</strong>
 </p>
 
-<p class = "normal2 directions"><em>One of the following
-Antiphons may be sung or said with the Invitatory <br>
-Psalm </em></p>
-
-
-<p class = "normal">{{antiphon}}</p>
-
 {{invit_psalm | safe}}
 
 <p class = "normal2 directions"><em>Then follows </em></p>
 
-<p class = "normal directions"><strong>Psalms</strong> </p>
+<p class = "normal directions"><strong>The Psalm or Psalms Appointed</strong> </p>
 
 <div id = "psalms">
 {{psalms | safe}}
@@ -263,8 +246,9 @@ chapter and verse may be added. </em></p>
     Thanks be to God.
 </p>
 
-<p class = "normal directions">After each Lesson the Reader may
-say</p>
+<p class = "normal directions">
+    After each Lesson the Reader may say
+</p>
 
 <p class = "normal directions">
     &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
